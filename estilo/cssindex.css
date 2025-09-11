@@ -1,9 +1,22 @@
 #cab {
-    background-color: rgb(20, 102, 20);
+    background-color: gray;
     height: 100px;
+    padding: 0%;
 }
 
 #cab img {
     height: 50px;
     padding: 20px;
+}
+
+#esportes {
+    border-radius: 60px;
+    width: 200px;
+    margin: 50px;
+    
+}
+
+
+#carrinho {
+    margin-left: 1500px;
 }
