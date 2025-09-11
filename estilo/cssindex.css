@@ -1,14 +1,36 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Figtree", sans-serif;
+}
+
+
+#logo {
+    height: 100px;
+    width: auto; 
+}
+
 #cab {
-    background-color: gray;
+    background-color: #2E8B57;
+    height: 100px;
+    width: 100%;  
+    box-shadow: -2px 7px 16px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -2px 7px 16px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 7px 16px -1px rgba(0,0,0,0.75);
+    display: flex;               
+    justify-content: flex-end;   
+    align-items: center;          
+    padding-right: 20px;          
+}
+
+
+
+#cab {
+    background-color: #2E8B57;
     height: 100px;
     padding: 0%;
 }
-
-#cab img {
-    height: 50px;
-    padding: 20px;
-}
-
 #esportes {
     border-radius: 60px;
     width: 200px;
@@ -16,7 +38,24 @@
     
 }
 
-
 #carrinho {
-    margin-left: 1500px;
+    height: 60px;
+    width: 60px;
+    margin-left: 15px;
+}
+
+#login {
+    height: 60px;
+    width: 60px;
+    margin-left: 15px;
+}
+
+#fav {
+    height: 60px;
+    width: 60px;
+    margin-left: 15px;
+}
+
+#textoencontre{
+    margin-top: 500px;
 }
