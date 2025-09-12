@@ -93,7 +93,7 @@ class EcommerceAPI {
 
     clearCart() {
         this.cart = [];
-        this._saveCart();
+        this.saveCart();
 
     }
 
@@ -101,7 +101,7 @@ class EcommerceAPI {
         const index = this.cart.indexOf(productId);
         if (index > -1) {
             this.cart.splice(index, 1);
-            this._saveCart(); // Save cart after modification
+            this.saveCart(); // Save cart after modification
         }
     }
 }
