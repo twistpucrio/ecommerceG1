@@ -5,28 +5,147 @@ class EcommerceAPI {
                 id: 1,
                 name: 'Barra de acampamento',
                 price: 420.99,
-                area:'',
+                category:'camping',
                 image: ''
             },
             {
                 id: 2,
                 name: 'Saco de dormir',
                 price: 155.99,
-                area:'',
+                category:'camping',
                 image: ''
             },
             {
                 id: 3,
                 name: 'Mochila de trilha',
                 price: 230.00,
-                area:'',
+                category:'camping',
                 image: ''
             },
             {
                 id: 4,
-                name: 'luvas de boxe',
+                name: 'Luvas de boxe',
                 price: 56.90,
-                area:'',
+                category:'luta',
+                image: ''
+            },
+            {
+                id: 5,
+                name: 'Whey Protein',
+                price: 100.00,
+                category:'suplementos',
+                image: ''
+            },
+            {
+                id: 6,
+                name: 'Ômega 3',
+                price: 80.00,
+                category:'suplementos',
+                image: ''
+            },
+            {
+                id: 7,
+                name: 'Barra de proteína',
+                price: 12.00,
+                category:'suplementos',
+                image: ''
+            },
+            {
+                id: 8,
+                name: 'Raquete de Beach Tennis',
+                price: 500.00,
+                category:'tennis',
+                image: ''
+            },
+            {
+                id: 9,
+                name: 'Bola de Beach Tennis',
+                price: 100.00,
+                category:'tennis',
+                image: ''
+            },
+            {
+                id: 10,
+                name: 'Grip para a raquete',
+                price: 20.00,
+                category:'tennis',
+                image: ''
+            },
+            {
+                id: 11,
+                name: 'Touca para natação',
+                price: 45.00,
+                category:'natacao',
+                image: ''
+            },
+            {
+                id: 12,
+                name: 'Óculos para natação',
+                price: 50.90,
+                category:'natacao',
+                image: ''
+            },
+            {
+                id: 13,
+                name: 'Pé de pato',
+                price: 120.90,
+                category:'natacao',
+                image: ''
+            },
+            {
+                id: 14,
+                name: 'Capacete',
+                price: 40.00,
+                category:'ciclismo',
+                image: ''
+            },
+            {
+                id: 15,
+                name: 'Luvas para ciclismo',
+                price: 50.90,
+                category:'ciclismo',
+                image: ''
+            },
+            {
+                id: 16,
+                name: 'Suporte de garrafa',
+                price: 56.90,
+                category:'ciclismo',
+                image: ''
+            },
+            {
+                id: 17,
+                name: 'Bola de futebol',
+                price: 99.90,
+                category:'bola',
+                image: ''
+            },
+            {
+                id: 18,
+                name: 'Bola de vólei',
+                price: 78.90,
+                category:'bola',
+                image: ''
+            },
+            {
+                id: 19,
+                name: 'Bola de basquete',
+                price: 90.00,
+                category:'luta',
+                image: ''
+            },
+            {
+                id: 20,
+                name: 'Protetor bucal',
+                price: 29.90,
+                category:'luta',
+                image: ''
+            },
+            {
+                id: 21,
+                name: 'Saco de pancadas',
+                price: 200.00,
+                category:'luta',
                 image: ''
             }
         ];
