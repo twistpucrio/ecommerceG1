@@ -28,27 +28,28 @@ class EcommerceAPI {
                 price: 56.90,
                 category:'luta',
                 image: ''
+                
             },
             {
                 id: 5,
                 name: 'Whey Protein',
                 price: 100.00,
                 category:'suplementos',
-                image: ''
+                image: 'img/wheyprotein.png'
             },
             {
                 id: 6,
                 name: 'Ômega 3',
                 price: 80.00,
                 category:'suplementos',
-                image: ''
+                image: 'img/omega3.png'
             },
             {
                 id: 7,
                 name: 'Barra de proteína',
                 price: 12.00,
                 category:'suplementos',
-                image: ''
+                image: 'img/barrinhaptvanila.png'
             },
             {
                 id: 8,
@@ -139,14 +140,14 @@ class EcommerceAPI {
                 name: 'Protetor bucal',
                 price: 29.90,
                 category:'luta',
-                image: ''
+                image: 'img/protetorbucal.png'
             },
             {
                 id: 21,
                 name: 'Saco de pancadas',
                 price: 200.00,
                 category:'luta',
-                image: ''
+                image: 'img/sacopancada.png'
             }
         ];
         // Load cart from localStorage or initialize as empty array
