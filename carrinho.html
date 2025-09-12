@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Carrinho de Compras </title>
+    <title>Carrinho de Compras</title>
 </head>
 <body>
     <nav>
-
+        <a href="produtos.html">Produtos</a>
+        <a href="carrinho.html">Carrinho de Compras</a>
     </nav>
+
     <div id="cart">
         <h1>Seu Carrinho de Compras</h1>
         <div id="cart-items-container"></div>
         <div id="cart-summary">
+
             <div id="cart-total">Total: $0.00</div>
-            <button id="checkout-btn"> Finalizar compra </button>
+            <button id="checkout-btn">Proceed to Checkout</button>
         </div>
-        </div>
+        <button id="clearcart-btn"> Excluir tudo </button>
+    </div>
+
+    <script src="script/EcommerceAPI.js"></script>
+    <script src="script/scriptcarrinho.js"></script>
+
   
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
