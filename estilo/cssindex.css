@@ -29,5 +29,24 @@ body {
     font-family: Figtree;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
+#principal {
+    margin-top: 40px;
+    display: flex; /* Adiciona flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    text-align: center;
+    height: auto; /* Ajusta a altura automaticamente ao conteúdo */
+    padding: 20px; /* Adiciona um espaçamento interno */
+}
+#principal img {
+    height: 600px;
+    padding: 0;  
+    margin: 10px; /* usa margin em vez de padding, se quiser distância */
+}
+
+h1,h2,h3{
+    margin-left: 50px;
+}
