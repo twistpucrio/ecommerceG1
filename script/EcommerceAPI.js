@@ -13,7 +13,7 @@ class EcommerceAPI {
                 name: 'Saco de dormir',
                 price: 155.99,
                 category:'camping',
-                image: ''
+                image: 'img/sacodedormiraberto.png'
             },
             {
                 id: 3,
@@ -27,7 +27,7 @@ class EcommerceAPI {
                 name: 'Luvas de boxe',
                 price: 56.90,
                 category:'luta',
-                image: ''
+                image: 'img/luta2.png'
                 
             },
             {
@@ -56,14 +56,14 @@ class EcommerceAPI {
                 name: 'Raquete de Beach Tennis',
                 price: 500.00,
                 category:'tennis',
-                image: ''
+                image: 'img/raquetebeach.png'
             },
             {
                 id: 9,
                 name: 'Bola de Beach Tennis',
                 price: 100.00,
                 category:'tennis',
-                image: ''
+                image: 'img/bolatenis.png'
             },
             {
                 id: 10,
@@ -98,14 +98,14 @@ class EcommerceAPI {
                 name: 'Capacete',
                 price: 40.00,
                 category:'ciclismo',
-                image: ''
+                image: 'img/capaceteciclismo.png'
             },
             {
                 id: 15,
                 name: 'Luvas para ciclismo',
                 price: 50.90,
                 category:'ciclismo',
-                image: ''
+                image: 'img/luvaciclismo.png'
             },
             {
                 id: 16,
@@ -119,21 +119,21 @@ class EcommerceAPI {
                 name: 'Bola de futebol',
                 price: 99.90,
                 category:'bola',
-                image: ''
+                image: 'img/bolafutebol.png'
             },
             {
                 id: 18,
                 name: 'Bola de vólei',
                 price: 78.90,
                 category:'bola',
-                image: ''
+                image: 'img/bolavolei.png'
             },
             {
                 id: 19,
                 name: 'Bola de basquete',
                 price: 90.00,
                 category:'luta',
-                image: ''
+                image: 'img/bolabasquete.png'
             },
             {
                 id: 20,

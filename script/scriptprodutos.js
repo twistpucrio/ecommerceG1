@@ -10,7 +10,7 @@
                     const itemEl = document.createElement('div');
                     itemEl.className = 'product-item';
                     itemEl.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}" width="80" height="80">
+                        <img src="${product.image}" alt="${product.name}" width="180" height="200">
                         <div class="info">
                             <h3>${product.name}</h3>
                             <div class="price">$${product.price.toFixed(2)}</div>
