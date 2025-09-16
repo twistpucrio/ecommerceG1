@@ -1,52 +1,198 @@
-
-#cab img {
-    height: 50px;
-    padding: 20px;
-}
-
-#esportes {
-    border-radius: 60px;
-    width: 200px;
-    margin: 50px;
-    
-}
-
-#carrinho {
-    margin-left: 1500px;
-}
-#cab {
-    background-color: rgb(59, 156, 119);
-    height: 100px;
-    padding: 0%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-     width: 100vw;
+/* Reset básico */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Figtree;
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    font-family: 'Figtree', 'DM Sans', Arial, sans-serif;
+    background: #f7faf9;
+    color: #222;
 }
 
+/* Header */
+#cab {
+    background: linear-gradient(90deg, #3b9c77 60%, #2e7d5a 100%);
+    height: 90px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(59,156,119,0.08);
+}
+
+#logo h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+}
+
+#icones {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.icone {
+    height: 38px;
+    width: 55px;
+    box-shadow: 0 2px 8px rgba(59,156,119,0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.icone:hover {
+    transform: scale(1.12);
+    box-shadow: 0 4px 16px rgba(59,156,119,0.18);
+}
+
+/* Principal banner */
 #principal {
-    margin-top: 40px;
-    display: flex; /* Adiciona flexbox */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    text-align: center;
-    height: auto; /* Ajusta a altura automaticamente ao conteúdo */
-    padding: 20px; /* Adiciona um espaçamento interno */
+    margin: 40px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#principal img {
-    height: 600px;
-    padding: 0;  
-    margin: 10px; /* usa margin em vez de padding, se quiser distância */
+.img-principal {
+
+    max-width: 300vw;
+    max-height: 650px;
+
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(59,156,119,0.10);
 }
 
-h1,h2,h3{
+/* Esportes favoritos */
+#esportes-favoritos {
+    margin: 30px auto;
+    padding: 20px 0;
+    max-width: 1500px;
+    text-align: center;
+}
+#esportes-favoritos h2 {
+    font-size: 1.5rem;
+    color: #2e7d5a;
+    margin-bottom: 18px;
+    font-family: 'DM Sans', sans-serif;
+}
+.esportes-lista {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.esporte {
+    width: 170px;
+    height: 170px;
+    border-radius: 16px; 
+    background: #eafaf3;
+    box-shadow: 0 2px 8px rgba(59,156,119,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    object-fit: cover;
+    cursor: pointer;
+    display: inline-block;
+}
+.esporte:hover {
+    transform: scale(1.13);
+    box-shadow: 0 4px 16px rgba(59,156,119,0.18);
+}
+
+/* Categorias */
+#categorias {
+    margin: 40px auto 60px auto;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(59,156,119,0.07);
+    padding: 30px 0;
+    text-align: center;
+    
+}
+
+#categorias h2 {
+    color: #3b9c77;
+    font-size: 1.3rem;
+    margin: 18px 0 8px 0;
+    font-family: 'DM Sans', sans-serif;
+    display: inline;
+    text-align: center;
     margin-left: 50px;
+}
+.categoria {
+    width: 320px;
+    height: 220px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(59,156,119,0.10);
+    transition: transform 0.2s;
+    display: inline-block;
+    margin: 10px;
+}
+
+
+
+.categoria:hover {
+    transform: scale(1.07);
+}
+
+
+#top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 0 8px 0;
+    background: #eafaf3;
+}
+#busca {
+    width: 260px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #3b9c77;
+    font-size: 1rem;
+}
+#btn-busca {
+    background: #3b9c77;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#btn-busca:hover {
+    background: #2e7d5a;
+}
+
+
+/* Responsivo */
+@media (max-width: 700px) {
+    #cab {
+        flex-direction: column;
+        height: auto;
+        padding: 16px;
+    }
+    #logo h1 {
+        font-size: 1.5rem;
+    }
+    .img-principal {
+        max-height: 180px;
+    }
+    .esportes-lista {
+        gap: 18px;
+    }
+    .esporte {
+        width: 70px;
+        height: 70px;
+    }
+    #categorias {
+        padding: 16px 0;
+    }
+    .categoria {
+        width: 100px;
+        height: 70px;
+    }
 }
