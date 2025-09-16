@@ -1,19 +1,15 @@
-
-
-
 class EcommerceAPI {
     constructor() {
-        // Load cart from localStorage or initialize as empty array
-        this.products = this.listProducts();
         this.cart = this.loadCart();
+        this.productsPromise = this.loadProducts();
     }
 
     loadProducts() {
         return fetch("script/prod.json")
         .then(response => {
-         if (!response.ok) {
-            throw new Error('Network response was not ok');
-         }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             return response.json();
         })
         .then(data => data.products)
@@ -23,13 +19,9 @@ class EcommerceAPI {
         });
     }
 
-  // Your original listProducts method, which calls the asynchronous loadProducts
-  listProducts() {
-    // This method needs to return the promise from loadProducts
-    return this.loadProducts();
-  }
-
-
+    listProducts() {
+        return this.productsPromise;
+    }
 
     loadCart() {
         try {
@@ -49,63 +41,30 @@ class EcommerceAPI {
         }
     }
     
-
     addToCart(product) {
-        if (product) {
-            this.cart.push(product);
-            this.saveCart(); // Save cart after modification
+        if (product && product.id) {
+            this.cart.push(product.id);
+            this.saveCart();
         }
     }
 
     getCart() {
-        const total = this.cart.reduce((acc, productId) => {
-            const product = this.products.find(p => p.id === productId);
-            return acc + (product ? product.price : 0);
-        }, 0);
-
         return {
             products: [...this.cart],
-            total,
+            total: 0
         };
     }
-
-    checkout() {
-        const cartData = this.getCart();
-
-        const order = {
-            success: true,
-            orderId: Date.now().toString(),
-            total: cartData.total,
-            products: cartData.products,
-        };
-
-        this.clearCart();
-
-        return order;
+    
+    removeItemFromCart(productId) {
+        const index = this.cart.findIndex(id => id === productId);
+        if (index > -1) {
+            this.cart.splice(index, 1);
+            this.saveCart();
+        }
     }
 
     clearCart() {
         this.cart = [];
         this.saveCart();
-
-    }
-
-    removeItemFromCart(productId) {
-        const index = this.cart.indexOf(productId);
-        if (index > -1) {
-            this.cart.splice(index, 1);
-            this.saveCart(); // Save cart after modification
-        }
     }
 }
-
-// Make it available globally for testing
-if (typeof window !== 'undefined') {
-    window.EcommerceAPI = EcommerceAPI;
-}
-
-// For Node.js environments
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = EcommerceAPI;
-}
-
