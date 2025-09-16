@@ -15,7 +15,7 @@
                         <img src="${product.image}" alt="${product.name}" width="180" height="200">
                         <div class="info">
                             <h3>${product.name}</h3>
-                            <div class="price">$${product.price.toFixed(2)}</div>
+                            <div class="price">R${product.price.toFixed(2)}</div>
                         </div>
                         <button data-product-id="${product.id}">Adicione ao carrinho</button>
                     `;
@@ -39,7 +39,7 @@
                 <img src="${product.image}" alt="${product.name}" width="180" height="200">
                 <div class="info">
                     <h3>${product.name}</h3>
-                    <div class="price">$${product.price.toFixed(2)}</div>
+                    <div class="price">R$${product.price.toFixed(2)}</div>
                 </div>
                 <button data-product-id="${product.id}">Adicione ao carrinho</button>
             `;
