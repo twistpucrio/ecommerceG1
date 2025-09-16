@@ -1,158 +1,35 @@
+
+
+
 class EcommerceAPI {
     constructor() {
-        this.products = [
-            {
-                id: 1,
-                name: 'Barra de acampamento',
-                price: 420.99,
-                category:'camping',
-                image: ''
-            },
-            {
-                id: 2,
-                name: 'Saco de dormir',
-                price: 155.99,
-                category:'camping',
-                image: 'img/sacodedormiraberto.png'
-            },
-            {
-                id: 3,
-                name: 'Mochila de trilha',
-                price: 230.00,
-                category:'camping',
-                image: ''
-            },
-            {
-                id: 4,
-                name: 'Luvas de boxe',
-                price: 56.90,
-                category:'luta',
-                image: 'img/luta2.png'
-                
-            },
-            {
-                id: 5,
-                name: 'Whey Protein',
-                price: 100.00,
-                category:'suplementos',
-                image: 'img/wheyprotein.png'
-            },
-            {
-                id: 6,
-                name: 'Ômega 3',
-                price: 80.00,
-                category:'suplementos',
-                image: 'img/omega3.png'
-            },
-            {
-                id: 7,
-                name: 'Barra de proteína',
-                price: 12.00,
-                category:'suplementos',
-                image: 'img/barrinhaptvanila.png'
-            },
-            {
-                id: 8,
-                name: 'Raquete de Beach Tennis',
-                price: 500.00,
-                category:'tennis',
-                image: 'img/raquetebeach.png'
-            },
-            {
-                id: 9,
-                name: 'Bola de Beach Tennis',
-                price: 100.00,
-                category:'tennis',
-                image: 'img/bolatenis.png'
-            },
-            {
-                id: 10,
-                name: 'Grip para a raquete',
-                price: 20.00,
-                category:'tennis',
-                image: ''
-            },
-            {
-                id: 11,
-                name: 'Touca para natação',
-                price: 45.00,
-                category:'natacao',
-                image: ''
-            },
-            {
-                id: 12,
-                name: 'Óculos para natação',
-                price: 50.90,
-                category:'natacao',
-                image: ''
-            },
-            {
-                id: 13,
-                name: 'Pé de pato',
-                price: 120.90,
-                category:'natacao',
-                image: ''
-            },
-            {
-                id: 14,
-                name: 'Capacete',
-                price: 40.00,
-                category:'ciclismo',
-                image: 'img/capaceteciclismo.png'
-            },
-            {
-                id: 15,
-                name: 'Luvas para ciclismo',
-                price: 50.90,
-                category:'ciclismo',
-                image: 'img/luvaciclismo.png'
-            },
-            {
-                id: 16,
-                name: 'Suporte de garrafa',
-                price: 56.90,
-                category:'ciclismo',
-                image: ''
-            },
-            {
-                id: 17,
-                name: 'Bola de futebol',
-                price: 99.90,
-                category:'bola',
-                image: 'img/bolafutebol.png'
-            },
-            {
-                id: 18,
-                name: 'Bola de vólei',
-                price: 78.90,
-                category:'bola',
-                image: 'img/bolavolei.png'
-            },
-            {
-                id: 19,
-                name: 'Bola de basquete',
-                price: 90.00,
-                category:'luta',
-                image: 'img/bolabasquete.png'
-            },
-            {
-                id: 20,
-                name: 'Protetor bucal',
-                price: 29.90,
-                category:'luta',
-                image: 'img/protetorbucal.png'
-            },
-            {
-                id: 21,
-                name: 'Saco de pancadas',
-                price: 200.00,
-                category:'luta',
-                image: 'img/sacopancada.png'
-            }
-        ];
         // Load cart from localStorage or initialize as empty array
+        this.products = this.listProducts();
         this.cart = this.loadCart();
     }
+
+    loadProducts() {
+        return fetch("script/prod.json")
+        .then(response => {
+         if (!response.ok) {
+            throw new Error('Network response was not ok');
+         }
+            return response.json();
+        })
+        .then(data => data.products)
+        .catch(error => {
+            console.error('There was a problem loading the products:', error);
+            return [];
+        });
+    }
+
+  // Your original listProducts method, which calls the asynchronous loadProducts
+  listProducts() {
+    // This method needs to return the promise from loadProducts
+    return this.loadProducts();
+  }
+
+
 
     loadCart() {
         try {
@@ -172,14 +49,10 @@ class EcommerceAPI {
         }
     }
     
-    listProducts() {
-        return this.products;
-    }
 
-    addToCart(productId) {
-        const product = this.products.find(p => p.id === productId);
+    addToCart(product) {
         if (product) {
-            this.cart.push(productId);
+            this.cart.push(product);
             this.saveCart(); // Save cart after modification
         }
     }
@@ -235,3 +108,4 @@ if (typeof window !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = EcommerceAPI;
 }
+
