@@ -1,23 +1,24 @@
-      document.addEventListener('DOMContentLoaded', () => {
-            const api = new EcommerceAPI();
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const cartTotalEl = document.getElementById('cart-total');
-            const checkoutBtn = document.getElementById('checkout-btn');
-            const clearCartBtn = document.getElementById("clearcart-btn");
-            let removeItemBtn = document.getElementsByClassName('remover');
-            
+document.addEventListener('DOMContentLoaded', () => {
+    const api = new EcommerceAPI();
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalEl = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const clearCartBtn = document.getElementById("clearcart-btn");
 
-            function renderCart() {
-                const cart = api.getCart();
-                const allProducts = api.listProducts();
-                
-                const cartItemDetails = cart.products.map(productId => {
+    function renderCart() {
+        // 1. Obtenha a promessa dos produtos e a promessa do carrinho
+        Promise.all([api.listProducts(), api.getCart().products])
+            .then(([allProducts, cartProductsIds]) => {
+                const cartItemDetails = cartProductsIds.map(productId => {
                     return allProducts.find(p => p.id === productId);
-                }).filter(p => p); // Filter out undefined if a product is not found
+                }).filter(p => p); // Filtra produtos não encontrados
+
+                // 2. Calcula o total do carrinho
+                const total = cartItemDetails.reduce((acc, item) => acc + item.price, 0);
 
                 if (cartItemDetails.length === 0) {
                     cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio. <a href="produtos.html">Continue a comprar</a>.</p>';
-                    checkoutBtn.style.display = 'none'; // Hide checkout if cart is empty
+                    checkoutBtn.style.display = 'none';
                 } else {
                     cartItemsContainer.innerHTML = '';
                     cartItemDetails.forEach(item => {
@@ -32,38 +33,59 @@
                             <button class="remover" data-product-id="${item.id}">
                                 Remover
                             </button>
-
                         `;
                         cartItemsContainer.appendChild(itemEl);
                     });
                     checkoutBtn.style.display = 'block';
                 }
-
-                cartTotalEl.textContent = `Total: $${cart.total.toFixed(2)}`;
-            }
-
-            checkoutBtn.addEventListener('click', () => {
-                const order = api.checkout();
-                if (order.success) {
-                    alert(`Compra realizada com sucesso! O ID do seu pedido é ${order.orderId}. Total: $${order.total.toFixed(2)}`);
-                    renderCart(); // Re-render to show the empty cart
-                } else {
-                    alert('Não foi possível finalizar a comopra. O seu carrinho pode estar vazio.');
-                }
+                cartTotalEl.textContent = `Total: $${total.toFixed(2)}`;
             });
-            clearCartBtn.addEventListener("click",() =>{
-                api.clearCart();
-                renderCart();
-            });
-            cartItemsContainer.addEventListener('click', (event) => {
-                console.log(event.target.dataset)
-                if (event.target.tagName=== 'BUTTON' && event.target.dataset.productId) {
-                    const productId = parseInt(event.target.dataset.productId, 10);
-                    api.removeItemFromCart(productId);
-                    renderCart();
-                    
-                }
-            });
+    }
 
+    checkoutBtn.addEventListener('click', () => {
+        // ... (seu código de checkout, precisa ser reajustado para usar promises)
+    });
+
+    clearCartBtn.addEventListener("click", () => {
+        api.clearCart();
+        renderCart();
+    });
+
+    cartItemsContainer.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON' && event.target.dataset.productId) {
+            const productId = parseInt(event.target.dataset.productId, 10);
+            api.removeItemFromCart(productId);
             renderCart();
+        }
+    });
+
+    // Inicializa a renderização do carrinho
+    renderCart();
+});
+
+
+
+
+// Dentro do seu script do carrinho (carrinho.js)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const api = new EcommerceAPI();
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalEl = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    // Verifique se o ID está correto no HTML.
+    const clearCartBtn = document.getElementById("clearcart-btn"); 
+    
+    // ... (sua função renderCart() e os outros listeners de evento)
+    
+    // Este é o bloco de código que você precisa para o botão de limpar:
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener("click", () => {
+            api.clearCart();
+            renderCart(); // Renderiza o carrinho novamente para mostrar que está vazio
         });
+    }
+
+    // ... (o resto do seu script)
+    renderCart(); // Chamada inicial para renderizar o carrinho ao carregar a página
+});
