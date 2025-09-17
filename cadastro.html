@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Todos os produtos </title>
+
+    <link rel="stylesheet" href="estilo/cssindex.css">
+
+</head>
+<header id="cab">
+        <div id="logo">
+            <!-- Substitua por uma imagem de logo se tiver -->
+            <h1>MOVE</h1>
+        </div>
+        <nav id="icones">
+
+            <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
+            
+        </nav>
+    </header>
+<body>
+
+<input type="text" id="nome" placeholder="Nome completo">
+<input type="text" id="aniversario" placeholder="Data de nascimento">
+<input type="text" id="cpf" placeholder="CPF">
+<input type="text" id="cep" placeholder="CEP">
+<input type="text" id="email" placeholder="E-mail">
+
+<input type="text" id="loginUsuario" placeholder="Usuário">
+<input type="password" id="loginSenha" placeholder="Senha">
+
+<button id="botaoCadastro">Cadastrar usuário e fazer login</button>
+<script src="script/EcommerceAPI.js"></script>
+<script>
+  const api = new EcommerceAPI();
+  document.getElementById('botaoCadastro').onclick = () => {
+    if (api.cadastro()) {
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+
+
+</body>
+    

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const api = new EcommerceAPI();
   const productListEl = document.getElementById('product-list');
+  
 
   function renderProducts(products) {
     productListEl.innerHTML = ''; // Limpa o conteúdo antes de renderizar
@@ -39,4 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   api.listProducts().then(products => {
     renderProducts(products);
   });
+  
 });
+
