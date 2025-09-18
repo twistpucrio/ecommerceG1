@@ -3,6 +3,7 @@ body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 body {
@@ -28,6 +29,7 @@ body {
     letter-spacing: 2px;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
+    text-decoration: none;
 }
 
 #icones {
@@ -43,6 +45,7 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
 }
+
 .icone:hover {
     transform: scale(1.12);
     box-shadow: 0 4px 16px rgba(59,156,119,0.18);
@@ -56,10 +59,8 @@ body {
     align-items: center;
 }
 .img-principal {
-
     max-width: 300vw;
     max-height: 650px;
-
     border-radius: 24px;
     box-shadow: 0 4px 24px rgba(59,156,119,0.10);
 }
@@ -71,18 +72,21 @@ body {
     max-width: 1500px;
     text-align: center;
 }
+
 #esportes-favoritos h2 {
     font-size: 1.5rem;
     color: #2e7d5a;
     margin-bottom: 18px;
     font-family: 'DM Sans', sans-serif;
 }
+
 .esportes-lista {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
 }
+
 .esporte {
     width: 170px;
     height: 170px;
@@ -94,6 +98,7 @@ body {
     cursor: pointer;
     display: inline-block;
 }
+
 .esporte:hover {
     transform: scale(1.13);
     box-shadow: 0 4px 16px rgba(59,156,119,0.18);
@@ -131,12 +136,9 @@ body {
     margin: 10px;
 }
 
-
-
 .categoria:hover {
     transform: scale(1.07);
 }
-
 
 #top-bar {
     display: flex;
@@ -146,6 +148,7 @@ body {
     padding: 18px 0 8px 0;
     background: #eafaf3;
 }
+
 #busca {
     width: 260px;
     padding: 8px 12px;
@@ -153,6 +156,7 @@ body {
     border: 1px solid #3b9c77;
     font-size: 1rem;
 }
+
 #btn-busca {
     background: #3b9c77;
     color: #fff;
@@ -163,10 +167,10 @@ body {
     cursor: pointer;
     transition: background 0.2s;
 }
+
 #btn-busca:hover {
     background: #2e7d5a;
 }
-
 
 /* Responsivo */
 @media (max-width: 700px) {
