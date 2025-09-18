@@ -1,64 +1,79 @@
- document.addEventListener('DOMContentLoaded', () => {
-            const api = new EcommerceAPI();
-            const productListEl = document.getElementById('product-list');
+document.addEventListener('DOMContentLoaded', () => {
+  const api = new EcommerceAPI();
+  const productListEl = document.getElementById('product-list');
+  const searchInput = document.getElementById('busca');   // campo de texto
+  const searchButton = document.getElementById('btn-busca'); // botão
 
-            /*function renderProducts() {
-                let products = api.listProducts();
-                productListEl.innerHTML = '';
-                console.log(products);
-
-                products.forEach(product => {
-                    console.log(product);
-                    const itemEl = document.createElement('div');
-                    itemEl.className = 'product-item';
-                    itemEl.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}" width="180" height="200">
-                        <div class="info">
-                            <h3>${product.name}</h3>
-                            <div class="price">$${product.price.toFixed(2)}</div>
-                        </div>
-                        <button data-product-id="${product.id}">Adicione ao carrinho</button>
-                    `;
-                    productListEl.appendChild(itemEl);
-                   
-                });
-            }*/
-
-            function renderProducts() {
-    // Call loadProducts and wait for the promise to resolve
-
-    api.listProducts().then(products => {
-        const productListEl = document.querySelector("#product-list"); // Assuming you have a div with this ID
-        productListEl.innerHTML = ''; // Clear previous content
-        console.log(products);
-        // Now that you have the products, iterate and render them
-        products.forEach(product => {
-            const itemEl = document.createElement('div');
-            itemEl.className = 'product-item';
-            itemEl.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" width="180" height="200">
-                <div class="info">
-                    <h3>${product.name}</h3>
-                    <div class="price">$${product.price.toFixed(2)}</div>
-                </div>
-                <button data-product-id="${product.id}">Adicione ao carrinho</button>
-            `;
-            productListEl.appendChild(itemEl);
-        });
+  // Renderizar produtos
+  function renderProducts(products) {
+    productListEl.innerHTML = '';
+    products.forEach(product => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'product-item';
+      itemEl.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" width="180" height="200">
+        <div class="info">
+          <h3>${product.name}</h3>
+          <div class="price">R$${product.price.toFixed(2)}</div>
+        </div>
+        <button data-product-id="${product.id}">Adicione ao carrinho</button>
+      `;
+      productListEl.appendChild(itemEl);
     });
-}
+  }
+  
+  // Carregar todos no início
+  api.listProducts().then(renderProducts);
 
-            productListEl.addEventListener('click', (event) => {
-                if (event.target.tagName === 'BUTTON' && event.target.dataset.productId) {
-                    const productId = parseInt(event.target.dataset.productId, 10);
-                    // pegar a lista de produto e fazer um dinf pelo id 
-                    api.addToCart(product);
-                    alert(`${api.listProducts().find(p => p.id === productId).name} adicionado ao carrinho!`);
-                }
-            });
+  if (searchButton) {
+    searchButton.addEventListener('click', () => {
+      const termo = searchInput.value.trim();
+      if (termo) {
+        api.filterProducts(termo).then(renderProducts);
+      } else {
+        api.listProducts().then(renderProducts);
+      }
+    });
+  }
 
-            renderProducts();
-        });
+  if (searchInput) {
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        const termo = searchInput.value.trim();
+        if (termo) {
+          api.filterProducts(termo).then(renderProducts);
+        } else {
+          api.listProducts().then(renderProducts);
+        }
+      }
+    });
+  }
 
+  // Adicionar ao carrinho
+  productListEl.addEventListener('click', async (event) => {
+    if (event.target.tagName === 'BUTTON' && event.target.dataset.productId) {
+      const productId = parseInt(event.target.dataset.productId, 10);
+      await api.addToCart(productId);
 
-        
+      const products = await api.listProducts();
+      const product = products.find(p => p.id === productId);
+      alert(`${product.name} adicionado ao carrinho!`);
+    }
+  });
+})
+  // Função de busca
+  function searchProducts() {
+    const value = searchInput.value.toLowerCase().trim();
+    const filtered = allProducts.filter(p =>
+      p.name.toLowerCase().includes(value)
+    );
+    renderProducts(filtered);
+  }
+
+  // Inicial: renderiza tudo
+  renderProducts(allProducts);
+
+  // Enter no input
+  searchInput.addEventListener("keyup", e => {
+    if (e.key === "Enter") searchProducts();
+  });

@@ -1,6 +1,3 @@
-
-
-
 class EcommerceAPI {
     constructor() {
         // Load cart from localStorage or initialize as empty array
@@ -24,10 +21,10 @@ class EcommerceAPI {
     }
 
   // Your original listProducts method, which calls the asynchronous loadProducts
-  listProducts() {
+    listProducts() {
     // This method needs to return the promise from loadProducts
-    return this.loadProducts();
-  }
+        return this.loadProducts();
+   }
 
 
 
@@ -71,16 +68,13 @@ class EcommerceAPI {
 
     checkout() {
         const cartData = this.getCart();
-
         const order = {
             success: true,
             orderId: Date.now().toString(),
             total: cartData.total,
             products: cartData.products,
         };
-
         this.clearCart();
-
         return order;
     }
 
@@ -97,6 +91,34 @@ class EcommerceAPI {
             this.saveCart(); // Save cart after modification
         }
     }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', async () => {
+            const termo = searchInput.value.trim();
+            if (termo) {
+            const filtered = await api.filterProducts(termo);
+            renderProducts(filtered);
+            } else {
+            const all = await api.listProducts();
+            renderProducts(all);
+            }
+        });
+        }
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', async (e) => {
+            if (e.key === 'Enter') {
+            const termo = searchInput.value.trim();
+            if (termo) {
+                const filtered = await api.filterProducts(termo);
+                renderProducts(filtered);
+            } else {
+                const all = await api.listProducts();
+                renderProducts(all);
+            }
+            }
+        });
+}
 }
 
 // Make it available globally for testing
