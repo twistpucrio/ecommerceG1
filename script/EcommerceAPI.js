@@ -68,6 +68,28 @@ class EcommerceAPI {
         this.saveCart();
     }
 
+
+    addToFavorites(product) {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorite = favorites.some(p => p.id === product.id);
+
+    if (!isAlreadyFavorite) {
+        favorites.push(product);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        console.log(`Produto adicionado aos favoritos: ${product.name}`);
+        return true; 
+    } else {
+        console.log(`Este produto já está na sua lista de favoritos: ${product.name}`);
+        return false; 
+    }
+}
+
+ removeFromFavorites(productId) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const newFavorites = favorites.filter(p => p.id !== productId);
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    }
+
     login() {
 
         const username = document.getElementById('loginUsuario').value.trim();

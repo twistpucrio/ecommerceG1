@@ -15,31 +15,45 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="price">R$${product.price.toFixed(2)}</div>
         </div>
         <button data-product-id="${product.id}">Adicione ao carrinho</button>
+        <button class="add-to-favorites-btn" data-product-id="${product.id}">❤️</button>
       `;
       productListEl.appendChild(itemEl);
     });
   }
 
-  productListEl.addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON' && event.target.dataset.productId) {
-      const productId = parseInt(event.target.dataset.productId, 10);
+productListEl.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.tagName === 'BUTTON' && target.dataset.productId) {
+        const productId = parseInt(target.dataset.productId, 10);
 
-      api.listProducts().then(products => {
-        const productToAdd = products.find(p => p.id === productId);
-        if (productToAdd) {
-          api.addToCart(productToAdd);
-          alert(`${productToAdd.name} adicionado ao carrinho!`);
-        }
-      }).catch(error => {
-        console.error('Erro ao adicionar produto ao carrinho:', error);
-      });
+        api.listProducts().then(products => {
+            const productToHandle = products.find(p => p.id === productId);
+
+            if (productToHandle) {
+                if (target.classList.contains('add-to-favorites-btn')) {
+                    // Captura o valor retornado pela função
+                    const wasAdded = api.addToFavorites(productToHandle); 
+                    if (wasAdded) {
+                        alert(`${productToHandle.name} adicionado aos favoritos! ❤️`);
+                    } else {
+                        alert(`Esse produto já foi adicionado aos favoritos.`);
+                    }
+                } else {
+                    api.addToCart(productToHandle);
+                    alert(`${productToHandle.name} adicionado ao carrinho!`);
+                }
+            }
+        }).catch(error => {
+            console.error('Erro ao manipular o produto:', error);
+        });
     }
-  });
-
+});
   // Chamada para renderizar os produtos
   api.listProducts().then(products => {
     renderProducts(products);
   });
   
 });
+
+
 
