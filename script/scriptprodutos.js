@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Renderizar produtos
   function renderProducts(products) {
-    productListEl.innerHTML = '';
-    products.forEach(product => {
+    console.log(products)
+    //productListEl.innerHTML = '';
+    products.map((product )=> {
+      console.log(product)
       const itemEl = document.createElement('div');
       itemEl.className = 'product-item';
       itemEl.innerHTML = `
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       productListEl.appendChild(itemEl);
     });
   }
-  
+
   // Carregar todos no início
   api.listProducts().then(renderProducts);
 
@@ -37,10 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (searchInput) {
+    searchInput.addEventListener('input', async (e) => {
+      const termo = searchInput.value.trim();
+      if (termo) {
+        const produtos= await api.filterProducts(termo)
+        renderProducts(produtos)
+
+        //await api.filterProducts(termo).then((
+        //     console.log('entrei'),
+        //     renderProducts
+        //)).catch((console.log('error')))
+        //} else {
+        // api.listProducts().then(renderProducts);
+        //  }
+  }})
     searchInput.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
         const termo = searchInput.value.trim();
         if (termo) {
+
           api.filterProducts(termo).then(renderProducts);
         } else {
           api.listProducts().then(renderProducts);
@@ -61,19 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 })
-  // Função de busca
-  function searchProducts() {
-    const value = searchInput.value.toLowerCase().trim();
-    const filtered = allProducts.filter(p =>
-      p.name.toLowerCase().includes(value)
-    );
-    renderProducts(filtered);
-  }
+// Função de busca
+function searchProducts() {
+  const value = searchInput.value.toLowerCase().trim();
+  const filtered = allProducts.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+  renderProducts(filtered);
+}
 
-  // Inicial: renderiza tudo
-  renderProducts(allProducts);
+// Inicial: renderiza tudo
+renderProducts(allProducts);
 
-  // Enter no input
-  searchInput.addEventListener("keyup", e => {
-    if (e.key === "Enter") searchProducts();
-  });
+// Enter no input
+searchInput.addEventListener("keyup", e => {
+  if (e.key === "Enter") searchProducts();
+});
