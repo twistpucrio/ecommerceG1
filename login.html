@@ -14,7 +14,14 @@
     <a href="index.html"><h1>MOVE</h1></a>
   </div>
   <nav id="icones">
-    <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
+    <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
+    <a href="favoritos.html"> <img src="img/favoritogpt.png" alt="Favoritos" class="icone"></a>
+    <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone" id="linkLogin"></a>
+  <script>
+  document.getElementById('linkLogin').addEventListener('click', () => {
+    sessionStorage.setItem('login_source', 'nav');
+  });
+</script>
   </nav>
 </header>
 <body>
@@ -29,21 +36,18 @@
   document.getElementById('botaoLogin').onclick = () => {
     const ok = api.login();
     if (ok) {
-      window.location.href = 'index.html';
+      const src = sessionStorage.getItem('login_source');
+      sessionStorage.removeItem('login_source'); // limpar pra não sobrar
+      if (src === 'checkout') {
+        window.location.href = 'carrinho.html';
+      } else {
+        window.location.href = 'index.html';
+      }
     } else {
       document.getElementById('btnCadastro').style.display = 'inline-block';
     }
   };
-
-  
-
-
-
-
-
-
-
-  
 </script>
+
 </body>
     

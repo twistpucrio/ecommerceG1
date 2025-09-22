@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const api = new EcommerceAPI();
   const cartItemsContainer = document.getElementById('cart-items-container');
   const cartTotalEl = document.getElementById('cart-total');
-  const checkoutBtn = document.getElementById('checkout-btn');
+  const checkoutBtn = document.getElementById('finalizarCompraBtn')
   const clearCartBtn = document.getElementById("clearcart-btn");
 
   function renderCart() {
@@ -43,10 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  checkoutBtn.addEventListener('click', () => {
-    // Lógica de checkout
-    alert("Checkout em andamento...");
-  });
 
   if (clearCartBtn) {
     clearCartBtn.addEventListener("click", () => {
@@ -67,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   document.getElementById('finalizarCompraBtn').addEventListener('click', () => {
-      api.checkout();
+  const ok = api.checkout();
+  if (ok) renderCart();  
 });
+
 });
+
 
