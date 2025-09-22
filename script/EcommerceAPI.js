@@ -137,8 +137,20 @@ class EcommerceAPI {
   alert('Cadastro concluído! Faça login.');
   return true;
 }
+
+checkout() {
+    const session = JSON.parse(localStorage.getItem('ecommerce_session'));
+
+    if (session && session.username) {
+        alert('Compra finalizada!');
+        this.clearCart();
+        return true;
+    } else {
+        window.location.href = 'login.html';
+            return false;
+        }
+
     }
-
-
+}
 
     

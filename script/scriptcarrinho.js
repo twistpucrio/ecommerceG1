@@ -64,4 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderCart(); // Chamada inicial para renderizar o carrinho ao carregar a página
+
+  
+  document.getElementById('finalizarCompraBtn').addEventListener('click', () => {
+      api.checkout();
 });
+});
+
