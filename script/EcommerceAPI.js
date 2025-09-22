@@ -84,7 +84,7 @@ class EcommerceAPI {
     }
 }
 
- removeFromFavorites(productId) {
+    removeFromFavorites(productId) {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const newFavorites = favorites.filter(p => p.id !== productId);
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
@@ -138,19 +138,23 @@ class EcommerceAPI {
   return true;
 }
 
+
 checkout() {
-    const session = JSON.parse(localStorage.getItem('ecommerce_session'));
+  let session = null;
+  try {
+    session = JSON.parse(localStorage.getItem('ecommerce_session'));
+  } catch (e) {
+    session = null;
+  }
 
-    if (session && session.username) {
-        alert('Compra finalizada!');
-        this.clearCart();
-        return true;
-    } else {
-        window.location.href = 'login.html';
-            return false;
-        }
-
-    }
+  if (session && typeof session.username === 'string' && session.username.trim() !== '') {
+    alert('Compra finalizada!');
+    this.clearCart();
+    return true;
+  } else {
+    sessionStorage.setItem('login_source', 'checkout');
+    window.location.href = 'login.html';
+    return false;
+  }
 }
-
-    
+}
