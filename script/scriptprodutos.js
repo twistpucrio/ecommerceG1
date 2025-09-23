@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const productListEl = document.getElementById('product-list');
   const searchInput = document.getElementById('busca');   // campo de texto
   const searchButton = document.getElementById('btn-busca'); // botão
-
+  
   // Renderizar produtos
   function renderProducts(products) {
-    productListEl.innerHTML = '';
+    productListEl.innerHTML = ''; // limpa antes de renderizar
     products.forEach(product => {
       const itemEl = document.createElement('div');
       itemEl.className = 'product-item';
@@ -21,33 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
       productListEl.appendChild(itemEl);
     });
   }
-  
-  // Carregar todos no início
-  api.listProducts().then(renderProducts);
 
-  if (searchButton) {
-    searchButton.addEventListener('click', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const termoBusca = urlParams.get('search');
+  if (termoBusca) {
+    api.filterProducts(termoBusca).then(renderProducts);
+  } 
+
+  searchButton.addEventListener('click', () => {
+    const termo = searchInput.value.trim();
+    if (termo) {
+      window.location.href = `produtos.html?search=${encodeURIComponent(termo)}`;//codifica partes da url
+    }
+  });
+
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
       const termo = searchInput.value.trim();
       if (termo) {
-        api.filterProducts(termo).then(renderProducts);
-      } else {
-        api.listProducts().then(renderProducts);
+        window.location.href = `produtos.html?search=${encodeURIComponent(termo)}`;
       }
-    });
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener('keyup', (e) => {
-      if (e.key === 'Enter') {
-        const termo = searchInput.value.trim();
-        if (termo) {
-          api.filterProducts(termo).then(renderProducts);
-        } else {
-          api.listProducts().then(renderProducts);
-        }
-      }
-    });
-  }
+    }
+  });
 
   // Adicionar ao carrinho
   productListEl.addEventListener('click', async (event) => {
@@ -60,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(`${product.name} adicionado ao carrinho!`);
     }
   });
-})
+
+
   // Função de busca
   function searchProducts() {
     const value = searchInput.value.toLowerCase().trim();
@@ -70,10 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts(filtered);
   }
 
-  // Inicial: renderiza tudo
-  renderProducts(allProducts);
-
   // Enter no input
   searchInput.addEventListener("keyup", e => {
     if (e.key === "Enter") searchProducts();
   });
+
+})

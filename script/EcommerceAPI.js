@@ -7,26 +7,30 @@ class EcommerceAPI {
 
     loadProducts() {
         return fetch("script/prod.json")
-        .then(response => {
-         if (!response.ok) {
-            throw new Error('Network response was not ok');
-         }
-            return response.json();
-        })
-        .then(data => data.products)
-        .catch(error => {
-            console.error('There was a problem loading the products:', error);
-            return [];
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => data.products)
+            .catch(error => {
+                console.error('There was a problem loading the products:', error);
+                return [];
+            });
     }
 
-  // Your original listProducts method, which calls the asynchronous loadProducts
+    // Your original listProducts method, which calls the asynchronous loadProducts
     listProducts() {
-    // This method needs to return the promise from loadProducts
+        // This method needs to return the promise from loadProducts
         return this.loadProducts();
-   }
+    }
 
-
+    async filterProducts(term) {
+        const products = await this.listProducts();
+        const lowerTerm = term.toLowerCase();
+        return products.filter(p => p.name.toLowerCase().includes(lowerTerm));
+    }
 
     loadCart() {
         try {
@@ -45,7 +49,6 @@ class EcommerceAPI {
             console.error("Failed to save cart to localStorage", e);
         }
     }
-    
 
     addToCart(product) {
         if (product) {
@@ -92,33 +95,25 @@ class EcommerceAPI {
         }
     }
 
-    if (searchButton) {
+    if(searchButton) {
         searchButton.addEventListener('click', async () => {
             const termo = searchInput.value.trim();
             if (termo) {
-            const filtered = await api.filterProducts(termo);
-            renderProducts(filtered);
-            } else {
-            const all = await api.listProducts();
-            renderProducts(all);
-            }
+                const filtered = await api.filterProducts(termo);
+            } 
         });
-        }
+    }
 
-    if (searchInput) {
+    if(searchInput) {
         searchInput.addEventListener('keyup', async (e) => {
             if (e.key === 'Enter') {
-            const termo = searchInput.value.trim();
-            if (termo) {
-                const filtered = await api.filterProducts(termo);
-                renderProducts(filtered);
-            } else {
-                const all = await api.listProducts();
-                renderProducts(all);
-            }
+                const termo = searchInput.value.trim();
+                if (termo) {
+                    const filtered = await api.filterProducts(termo);
+                } 
             }
         });
-}
+    }
 }
 
 // Make it available globally for testing
