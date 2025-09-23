@@ -146,7 +146,6 @@ body {
     align-items: center;
     gap: 12px;
     padding: 18px 0 8px 0;
-    background: #eafaf3;
 }
 
 #busca {
@@ -204,4 +203,25 @@ body {
 #car {
     width: 55px;
     height: 50px;
+}
+
+
+.btn-produtos {
+    /* Seus estilos de botão aqui */
+    background-color: #ffffff;
+    color: #2e7d5a;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #2e7d5a;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-produtos:hover {
+    background-color: #e0e6e4;
+    color: #1a4f38;
 }
