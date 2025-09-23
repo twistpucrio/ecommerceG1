@@ -51,3 +51,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const favorites = loadFavorites();
     renderFavorites(favorites);
 });
+
