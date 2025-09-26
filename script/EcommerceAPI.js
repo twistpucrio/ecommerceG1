@@ -18,26 +18,12 @@ class EcommerceAPI {
                 console.error('There was a problem loading the products:', error);
                 return [];
             });
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => data.products)
-            .catch(error => {
-                console.error('There was a problem loading the products:', error);
-                return [];
-            });
     }
 
     // Your original listProducts method, which calls the asynchronous loadProducts
-    // Your original listProducts method, which calls the asynchronous loadProducts
     listProducts() {
         // This method needs to return the promise from loadProducts
-        // This method needs to return the promise from loadProducts
         return this.loadProducts();
-    }
     }
 
     async filterProducts(term) {
@@ -114,22 +100,20 @@ class EcommerceAPI {
             const termo = searchInput.value.trim();
             if (termo) {
                 const filtered = await api.filterProducts(termo);
-            } 
+            }
         });
     }
-    }
 
-    if(searchInput) {
+
     if(searchInput) {
         searchInput.addEventListener('keyup', async (e) => {
             if (e.key === 'Enter') {
                 const termo = searchInput.value.trim();
                 if (termo) {
                     const filtered = await api.filterProducts(termo);
-                } 
+                }
             }
         });
-    }
     }
 }
 
