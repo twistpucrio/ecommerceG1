@@ -4,6 +4,56 @@ class EcommerceAPI {
         this.productsPromise = this.loadProducts();
     }
 
+    // --- Helpers para "banco" simples ---
+async _initUsuarios() {
+  // Se já está no localStorage, usa ele
+  const existente = localStorage.getItem('ecommerce_users');
+  if (existente) return JSON.parse(existente);
+
+  // Se não, tenta "semear" a partir de usuarios.json (se existir no site)
+  try {
+    const res = await fetch('./usuarios.json', { cache: 'no-store' });
+    if (res.ok) {
+      const json = await res.json();
+      const arr = Array.isArray(json.usuarios) ? json.usuarios : [];
+      localStorage.setItem('ecommerce_users', JSON.stringify(arr));
+      return arr;
+    }
+  } catch (_) { /* se não existir, segue com vazio */ }
+
+  localStorage.setItem('ecommerce_users', JSON.stringify([]));
+  return [];
+}
+
+_getUsers() {
+  return JSON.parse(localStorage.getItem('ecommerce_users') || '[]');
+}
+
+_setUsers(arr) {
+  localStorage.setItem('ecommerce_users', JSON.stringify(arr));
+}
+
+// Baixa um usuarios.json atualizado (você decide quando clicar)
+exportarUsuariosJSON() {
+  const usuarios = this._getUsers();
+  const blob = new Blob([JSON.stringify({ usuarios }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'usuarios.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Opcional: importar um arquivo usuarios.json escolhido pelo usuário
+async importarUsuariosJSON(file) {
+  const text = await file.text();
+  const data = JSON.parse(text);
+  const arr = Array.isArray(data.usuarios) ? data.usuarios : [];
+  this._setUsers(arr);
+  alert('usuarios.json importado com sucesso!');
+}
+
     loadProducts() {
         return fetch("script/prod.json")
         .then(response => {
@@ -90,25 +140,27 @@ class EcommerceAPI {
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
     }
 
-    login() {
+   async login() {
+  await this._initUsuarios(); // garante que o "banco" está carregado (seed do usuarios.json se houver)
 
-        const username = document.getElementById('loginUsuario').value.trim();
-        const senha    = document.getElementById('loginSenha').value;
+  const username = document.getElementById('loginUsuario').value.trim();
+  const senha    = document.getElementById('loginSenha').value;
 
-        const users = JSON.parse(localStorage.getItem('ecommerce_users') || '[]');
-        const ok = users.find(u => u.username === username && u.senha === senha);
+  const users = this._getUsers();
+  const ok = users.find(u => u.username === username && u.senha === senha);
 
-        
-        if (ok) {
-        localStorage.setItem('ecommerce_session', JSON.stringify({ username }));
-        return true; // logou
-    }
-        alert('Usuário ou senha inválidos.');
-        return false;
-    }
+  if (ok) {
+    localStorage.setItem('ecommerce_session', JSON.stringify({ username }));
+    return true; // logou
+  }
+  alert('Usuário ou senha inválidos.');
+  return false;
+}
 
-    cadastro() {
-        const user = {
+async cadastro() {
+  await this._initUsuarios();
+
+  const user = {
     nome:        document.getElementById('nome').value.trim(),
     aniversario: document.getElementById('aniversario').value.trim(),
     cpf:         document.getElementById('cpf').value.trim(),
@@ -118,24 +170,31 @@ class EcommerceAPI {
     senha:       document.getElementById('loginSenha').value
   };
 
-  
-  if (!user.username || !user.senha || !user.cep || !user.cpf || !user.aniversario || !user.nome  || !user.email) {
+  if (!user.username || !user.senha || !user.cep || !user.cpf || !user.aniversario || !user.nome || !user.email) {
     alert('Preencha todos os campos.');
     return false;
   }
 
-  const users = JSON.parse(localStorage.getItem('ecommerce_users') || '[]');
-
+  const users = this._getUsers();
   if (users.some(u => u.username === user.username)) {
     alert('Usuário já existe. Tente outro.');
     return false;
   }
 
   users.push(user);
-  localStorage.setItem('ecommerce_users', JSON.stringify(users));
+  this._setUsers(users);
+
+  // Se quiser já baixar o usuarios.json atualizado automaticamente, descomente:
+  // this.exportarUsuariosJSON();
 
   alert('Cadastro concluído! Faça login.');
   return true;
+}
+
+logout() {
+  localStorage.removeItem('ecommerce_session');
+  alert('Você saiu da conta.');
+  window.location.href = 'index.html'; // redireciona para a home (ou login.html se preferir)
 }
 
 

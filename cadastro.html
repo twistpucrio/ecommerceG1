@@ -34,11 +34,13 @@
 <script src="script/EcommerceAPI.js"></script>
 <script>
   const api = new EcommerceAPI();
-  document.getElementById('botaoCadastro').onclick = () => {
-    if (api.cadastro()) {
-      window.location.href = 'login.html';
-    }
-  };
+  
+  document.getElementById('botaoCadastro').onclick = async () => {
+  if (await api.cadastro()) { // <-- AQUI!
+    window.location.href = 'login.html';
+  }
+};
+
 </script>
 
 

@@ -29,25 +29,41 @@
 <input type="password" id="loginSenha" placeholder="Senha">
 <button id="botaoLogin">Entrar</button>
 <a href="cadastro.html" id="btnCadastro" style="display:none">Ir para cadastro</a>
+
+<button id="btnLogout" style="display:none">Sair</button>
+
+
 <script src="script/EcommerceAPI.js"></script>
 <script>
   const api = new EcommerceAPI();
 
-  document.getElementById('botaoLogin').onclick = () => {
-    const ok = api.login();
-    if (ok) {
-      const src = sessionStorage.getItem('login_source');
-      sessionStorage.removeItem('login_source'); // limpar pra não sobrar
-      if (src === 'checkout') {
-        window.location.href = 'carrinho.html';
-      } else {
-        window.location.href = 'index.html';
-      }
+  document.getElementById('botaoLogin').onclick = async () => {
+  const ok = await api.login(); // <-- AQUI!
+  if (ok) {
+    const src = sessionStorage.getItem('login_source');
+    sessionStorage.removeItem('login_source');
+    if (src === 'checkout') {
+      window.location.href = 'carrinho.html';
     } else {
-      document.getElementById('btnCadastro').style.display = 'inline-block';
+      window.location.href = 'index.html';
     }
-  };
+  } else {
+    document.getElementById('btnCadastro').style.display = 'inline-block';
+  }
+};
+
+  // Se existe sessão, mostra botão
+  const sess = localStorage.getItem('ecommerce_session');
+  if (sess) {
+    document.getElementById('btnLogout').style.display = 'inline-block';
+    document.getElementById('btnLogout').onclick = () => {
+      api.logout();
+    };
+  }
+
 </script>
+
+
 
 </body>
     
