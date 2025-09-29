@@ -1,0 +1,13 @@
+{
+  "usuarios": [
+    {
+      "nome": "admin",
+      "aniversario": "01/07/2007",
+      "cpf": 1234,
+      "cep": 5678,
+      "email": "fulano@gmail.com",
+      "username": "admin",
+      "senha": "senha1"
+    }
+  ]
+}

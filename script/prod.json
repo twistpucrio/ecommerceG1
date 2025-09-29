@@ -130,7 +130,7 @@
                 "id": 19,
                 "name": "Bola de basquete",
                 "price": 90.00,
-                "category":"luta",
+                "category":"bola",
                 "image": "img/bolabasquete.png"
             },
             {
