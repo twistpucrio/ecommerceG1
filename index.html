@@ -72,11 +72,29 @@
     </main>
 
 <script>
-    const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+    
+  const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+  if (isLoggedIn) {
+    document.getElementById('fav').style.display = 'inline-block';
+  }
 
-    if (isLoggedIn) {
-        document.getElementById('fav').style.display = 'inline-block';
-    }
+  // === Busca: envia para produtos.html?q=... ===
+  const buscaInput = document.getElementById('busca');
+  const buscaBtn   = document.getElementById('btn-busca');
+
+  function irParaBusca() {
+    const q = (buscaInput?.value || '').trim();
+    const url = q ? `produtos.html?q=${encodeURIComponent(q)}` : 'produtos.html';
+    window.location.href = url;
+  }
+
+  if (buscaBtn && buscaInput) {
+    buscaBtn.addEventListener('click', irParaBusca);
+    buscaInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') irParaBusca();
+    });
+  }
+</script>
 
 </script>
 </body>
