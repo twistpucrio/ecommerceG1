@@ -1,18 +1,15 @@
-#product-list{
-    display: inline-block;
-}
-
-#products{
-    display: inline-block;
-}
-
-#product-list {
+/* grid padrão */
+.product-grid,
+#product-list,
+#favorites-list,
+#cart-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
 
+/* card padrão */
 .product-item {
   background: #fff;
   border: 1px solid #ddd;
@@ -21,49 +18,32 @@
   text-align: center;
   transition: transform 0.2s;
 }
-
 .product-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
-
 .product-item img {
-  width: 180px;
-  height: 200px;
-  object-fit: contain; 
-  margin-bottom: 12px;
+  width: 180px; height: 200px;
+  object-fit: contain; margin-bottom: 12px;
 }
+.product-item h3 { font-size: 1.1rem; margin: 8px 0; }
+.product-item .price { font-weight: bold; color: #2c7b39; margin-bottom: 12px; }
 
-.product-item h3 {
-  font-size: 1.1rem;
-  margin: 8px 0;
+/* botão verde padrão — NÃO pega no coração */
+.product-item button:not(.add-to-favorites-btn) {
+  background: #2c7b39; color: #fff; border: none;
+  padding: 10px 16px; border-radius: 8px; cursor: pointer;
 }
+.product-item button:not(.add-to-favorites-btn):hover { background: #2c7b399f; }
 
-.product-item .price {
-  font-weight: bold;
-  color: #2c7b39;
-  margin-bottom: 12px;
+/* coração transparente */
+.product-item .add-to-favorites-btn {
+  background: transparent; border: 0; box-shadow: none;
+  padding: 4px; line-height: 1; cursor: pointer;
 }
+.product-item .add-to-favorites-btn:hover { transform: scale(1.1); }
 
-.product-item button {
-  background: #2c7b39;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
+
+a{ 
+  text-decoration: None;
 }
-
-.product-item button:hover {
-  background: #2c7b399f;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-a{
-  text-decoration: none;
-}
-

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${product.name}</h3>
                     <div class="price">R$${product.price.toFixed(2)}</div>
                 </div>
-                <button class="remove-from-favorites-btn" data-product-id="${product.id}">Remover dos favoritos</button>
+                <button id="removeIndividualFav" class="remove-from-favorites-btn" data-product-id="${product.id}">Remover dos favoritos</button>
             `;
             favoritesListEl.appendChild(itemEl);
         });
