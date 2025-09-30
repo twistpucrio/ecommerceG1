@@ -1,7 +1,7 @@
 {"products": [
             {
                 "id": 1,
-                "name": "Barra de acampamento",
+                "name": "Barraca de acampamento",
                 "price": 420.99,
                 "category":"camping",
                 "image": "img/barraca.png"
