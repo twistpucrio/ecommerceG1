@@ -47,3 +47,78 @@
 a{ 
   text-decoration: None;
 }
+
+
+/* Container principal dos filtros */
+#filter-options-container {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+#filter-options-container.active {
+    display: block; /* Mostra quando a classe 'active' é adicionada (pelo main-filter-btn) */
+}
+
+/* Estilo para botões de filtro */
+.filter-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    width: 100%; /* Opcional: para que ocupe todo o espaço */
+    text-align: left;
+}
+
+/* Estilo do submenu de categoria (os checkboxes) */
+.filter-submenu {
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-top: 1px dashed #eee;
+}
+
+.filter-submenu.active {
+    display: flex; /* Mostra quando a classe 'active' é adicionada (pelo category-filter-btn) */
+    flex-direction: column;
+}
+
+.filter-submenu label {
+    margin: 5px 0;
+}
+
+/* Estilo para os botões de ação (Aplicar e Limpar) */
+.action-button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #2c7b39; /* Azul */
+    color: white;
+}
+
+.action-button.clear {
+    background-color:#416347; /* Vermelho */
+}
+
+/* Estilo para o campo de preço */
+#price-filter-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+/* Oculta o container dos checkboxes de categoria por padrão */
+#category-options {
+    /* Esta linha é a CRÍTICA para remover o filtro que aparece por engano */
+    display: none; 
+    padding: 10px 0;
+    border-top: 1px dashed #eee;
+}
+
+/* Esta regra mantém a funcionalidade de mostrar ao clicar no botão: */
+#category-options.active {
+    display: flex; /* ou block */
+    flex-direction: column;
+}
+

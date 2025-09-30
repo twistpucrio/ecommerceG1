@@ -120,6 +120,8 @@ async importarUsuariosJSON(file) {
     }
 
 
+
+   
     addToFavorites(product) {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     const isAlreadyFavorite = favorites.some(p => p.id === product.id);
