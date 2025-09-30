@@ -15,7 +15,7 @@
   </div>
   <nav id="icones">
     <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
-    <a href="favoritos.html"> <img src="img/favoritogpt.png" alt="Favoritos" class="icone"></a>
+    <a href="favoritos.html"> <img src="img/favoritogpt.png" style="display:none" alt="Favoritos" class="icone" id="fav"></a>
     <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone" id="linkLogin"></a>
   <script>
   document.getElementById('linkLogin').addEventListener('click', () => {
@@ -34,34 +34,7 @@
 
 
 <script src="script/EcommerceAPI.js"></script>
-<script>
-  const api = new EcommerceAPI();
-
-  document.getElementById('botaoLogin').onclick = async () => {
-  const ok = await api.login(); // <-- AQUI!
-  if (ok) {
-    const src = sessionStorage.getItem('login_source');
-    sessionStorage.removeItem('login_source');
-    if (src === 'checkout') {
-      window.location.href = 'carrinho.html';
-    } else {
-      window.location.href = 'index.html';
-    }
-  } else {
-    document.getElementById('btnCadastro').style.display = 'inline-block';
-  }
-};
-
-  // Se existe sessão, mostra botão
-  const sess = localStorage.getItem('ecommerce_session');
-  if (sess) {
-    document.getElementById('btnLogout').style.display = 'inline-block';
-    document.getElementById('btnLogout').onclick = () => {
-      api.logout();
-    };
-  }
-
-</script>
+<script src="script/scriptlogin.js"></script>
 
 
 

@@ -4,6 +4,7 @@ class EcommerceAPI {
         this.productsPromise = this.loadProducts();
     }
 
+    
     // --- Helpers para "banco" simples ---
 async _initUsuarios() {
   // Se já está no localStorage, usa ele
@@ -216,4 +217,11 @@ checkout() {
     return false;
   }
 }
+
 }
+
+    const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+
+    if (isLoggedIn) {
+        document.getElementById('fav').style.display = 'inline-block';
+    }

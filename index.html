@@ -17,12 +17,14 @@
         </div>
         <nav id="icones">
             <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
-            <a href="favoritos.html"> <img src="img/favoritogpt.png" alt="Favoritos" class="icone"></a>
+            <a href="favoritos.html"> <img src="img/favoritogpt.png" style="display:none" alt="Favoritos" class="icone" id="fav"></a>
             <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
             
         </nav>
     </header>
 
+
+    
 <div id="top-bar">
     <input type="text" placeholder="Buscar produtos, categorias..." id="busca">
     <button id="btn-busca">Buscar</button>
@@ -68,5 +70,14 @@
     </section>
 </section>
     </main>
+
+<script>
+    const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+
+    if (isLoggedIn) {
+        document.getElementById('fav').style.display = 'inline-block';
+    }
+
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // A classe EcommerceAPI deve ser importada ou definida antes deste script.
     const api = new EcommerceAPI(); 
     const productListEl = document.getElementById('product-list');
+    const isLoggedIn = !!localStorage.getItem('ecommerce_session');
 
     // **Função para buscar a categoria da URL**
     function getCategoryFromUrl() {
@@ -10,28 +11,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return urlParams.get('categoria') || 'todos';
     }
 
-    // **Função de renderização dos produtos**
-    function renderProducts(products) {
-        productListEl.innerHTML = '';
-        if (products.length === 0) {
-            productListEl.innerHTML = '<p>Nenhum produto encontrado nesta categoria.</p>';
-        }
-
-        products.forEach(product => {
-            const itemEl = document.createElement('div');
-            itemEl.className = 'product-item';
-            itemEl.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" width="180" height="200">
-                <div class="info">
-                    <h3>${product.name}</h3>
-                    <div class="price">R$${product.price.toFixed(2)}</div>
-                </div>
-                <button data-product-id="${product.id}">Adicione ao carrinho</button>
-                <button class="add-to-favorites-btn" data-product-id="${product.id}">❤️</button>
-            `;
-            productListEl.appendChild(itemEl);
-        });
+   function renderProducts(products) {
+    productListEl.innerHTML = '';
+    if (products.length === 0) {
+        productListEl.innerHTML = '<p>Nenhum produto encontrado nesta categoria.</p>';
     }
+
+    products.forEach(product => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'product-item';
+
+        // só mostra o coração se estiver logado
+        const favoriteBtnHtml = isLoggedIn 
+          ? `<button class="add-to-favorites-btn" data-product-id="${product.id}">❤️</button>` 
+          : '';
+
+        itemEl.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" width="180" height="200">
+            <div class="info">
+                <h3>${product.name}</h3>
+                <div class="price">R$${product.price.toFixed(2)}</div>
+            </div>
+            <button data-product-id="${product.id}">Adicione ao carrinho</button>
+            ${favoriteBtnHtml}
+        `;
+        productListEl.appendChild(itemEl);
+    });
+}
+
 
     // **Função para lidar com os cliques nos botões de produto**
     productListEl.addEventListener('click', (event) => {
