@@ -1,3 +1,134 @@
 a{
     text-decoration: none;
 }
+
+input {
+  width: 90%;
+  max-width: 400px;        
+  padding: 12px 16px;      
+  margin: 10px auto;       
+  border: 1px solid #ccc;  
+  border-radius: 8px;      
+  font-size: 16px;         
+  box-sizing: border-box;  
+  display: block;          
+
+  
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+input:focus {
+  outline: none;                     
+  border-color: #2c7b39;            
+  box-shadow: 0 0 0 3px rgba(44,123,57,0.2);
+}
+
+
+button, #btnCadastro {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px 16px;
+  margin: 12px auto;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+
+  background-color: #2c7b39; /* verde */
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: background-color 0.2s, transform 0.1s;
+}
+button:hover {
+  background-color: #25662e;
+  transform: translateY(-2px);
+}
+button:active {
+  background-color: #1e4f24;
+  transform: translateY(0);
+}
+
+#btnLogout {
+  width: 60%;               
+  max-width: 200px;
+  margin-top: 8px;          
+  background-color: #dc2626; 
+  font-size: 14px;
+  font-weight: 500;
+  
+}
+#btnLogout:hover {
+  background-color: #b91c1c; 
+  transform: translateY(-2px);
+}
+#btnLogout:active {
+  background-color: #991b1b;
+  transform: translateY(0);
+}
+
+.perfil-card{
+  width: 90%;
+  max-width: 400px;
+  margin: 12px auto 0;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+.perfil-card h2{
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.perfil-card p{
+  margin: 6px 0;
+  color: #374151;
+}
+
+#removeIndividual{
+  width: 20%;
+  max-width: 400px;
+  padding: 8px 14px;
+  margin: 12px auto;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+
+  background-color: rgba(8, 80, 36, 0.959); /* verde */
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+
+#removeIndividualFav{
+  width: 40%;
+  max-width: 400px;
+  padding: 8px 14px;
+  margin: 12px auto;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+
+  background-color: rgba(8, 80, 36, 0.959); /* verde */
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: background-color 0.2s, transform 0.1s;
+}
