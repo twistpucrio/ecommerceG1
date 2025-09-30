@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = cartItemDetails.reduce((acc, item) => acc + item.price, 0);
 
       if (cartItemDetails.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio. <a href="produtos.html">Continue a comprar</a>.</p>';
+        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
         checkoutBtn.style.display = 'none';
       } else {
         cartItemsContainer.innerHTML = '';
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <h4>${item.name}</h4>
               <div>R$${item.price.toFixed(2)}</div>
             </div>
-            <button class="remover" data-product-id="${item.id}">Remover</button>
+            <button class="remover" id="removeIndividual" data-product-id="${item.id}">Remover</button>
           `;
           cartItemsContainer.appendChild(itemEl);
         });
