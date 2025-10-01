@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,49 +10,62 @@
     <link rel="stylesheet" href="estilo/cssprodutos.css">
 </head>
 <header id="cab">
-        <div id="logo">
-            <!-- Substitua por uma imagem de logo se tiver -->
-            <a href="index.html"><h1>MOVE</h1></a>
-        </div>
-        <nav id="icones">
-            <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
-            <a href="favoritos.html"> <img src="img/favoritogpt.png" style="display:none" alt="Favoritos" class="icone" id="fav"></a>
-            <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
-            
-        </nav>
-    </header>
+    <div id="logo">
+        <!-- Substitua por uma imagem de logo se tiver -->
+        <a href="index.html">
+            <h1>MOVE</h1>
+        </a>
+    </div>
+    <nav id="icones">
+        <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
+        <a href="favoritos.html"> <img src="img/favoritogpt.png" style="display:none" alt="Favoritos" class="icone"
+                id="fav"></a>
+        <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
+
+    </nav>
+</header>
+
 <body>
-    
-  <script src="script/EcommerceAPI.js"></script>
-  <script src="script/scriptprodutos.js"></script>
+
+    <script src="script/EcommerceAPI.js"></script>
+    <script src="script/scriptprodutos.js"></script>
 
 
- <div id="filter-options-container">
-        
+    <div id="filter-options-container">
+
         <div class="filter-group">
             <input type="number" id="price-filter-input" placeholder="Insira o preço máximo:" min="0">
         </div>
 
         <div class="filter-group">
             <button id="category-filter-btn" class="filter-button">Categoria</button>
-            
+
             <div id="category-options" class="filter-submenu">
-                </div>
+            </div>
         </div>
-        
+
         <button id="apply-filters-btn" class="action-button">Aplicar Filtros</button>
         <button id="clear-filters-btn" class="action-button clear">Limpar Filtros</button>
     </div>
-    <br/>
+    <br />
     <div id="products">
         <h1>Nossos produtos</h1>
         <div id="product-list"></div>
 
-        
+
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <div id="modal-product-details">
+            </div>
+        </div>
     </div>
 
 
-
-
 </body>
+
 </html>
