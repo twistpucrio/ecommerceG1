@@ -122,3 +122,78 @@ a{
     flex-direction: column;
 }
 
+/* O Modal (escondido por padrão) */
+.modal {
+    display: none; /* Inicia escondido */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1000; /* Garante que fique acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite scroll se o conteúdo for grande */
+}
+
+/* O fundo branco semi-transparente (Overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Branco com 90% de opacidade */
+    backdrop-filter: blur(2px); /* Efeito opcional de desfoque no que está por baixo */
+}
+
+/* O Conteúdo do Modal (a caixa que mostra os detalhes) */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% do topo e centralizado horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Acima do overlay */
+}
+
+/* Botão de Fechar */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Estilos para o conteúdo interno do modal (opcional, para organização) */
+#modal-product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    
+}
+
+#modal-product-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.modal-product-price {
+    font-size: 1.5em;
+    color:  #2c7b39; /* Exemplo de cor de preço */
+    font-weight: bold;
+}
