@@ -7,6 +7,8 @@
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  margin-right: 350px;
+  margin-left: 30px;
 }
 
 /* card padrão */
@@ -18,14 +20,17 @@
   text-align: center;
   transition: transform 0.2s;
 }
+
 .product-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
+
 .product-item img {
   width: 180px; height: 200px;
   object-fit: contain; margin-bottom: 12px;
 }
+
 .product-item h3 { font-size: 1.1rem; margin: 8px 0; }
 .product-item .price { font-weight: bold; color: #2c7b39; margin-bottom: 12px; }
 
@@ -34,6 +39,7 @@
   background: #2c7b39; color: #fff; border: none;
   padding: 10px 16px; border-radius: 8px; cursor: pointer;
 }
+
 .product-item button:not(.add-to-favorites-btn):hover { background: #2c7b399f; }
 
 /* coração transparente */
@@ -41,16 +47,33 @@
   background: transparent; border: 0; box-shadow: none;
   padding: 4px; line-height: 1; cursor: pointer;
 }
-.product-item .add-to-favorites-btn:hover { transform: scale(1.1); }
 
+.product-item .add-to-favorites-btn:hover { transform: scale(1.1); }
 
 a{ 
   text-decoration: None;
 }
 
+body{
+    position:relative
+}
+
+h1{
+    margin-left: 30px;
+}
 
 /* Container principal dos filtros */
+/* Estilo para o menu lateral */
 #filter-options-container {
+    position: absolute; 
+    top: 85px; 
+    right: 0; 
+    width: 300px; /* Define a largura do menu */
+    height: 100%; /* Ocupa toda a altura da janela */
+    background-color: #f1f1f1; /* Cor de fundo do menu */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical se necessário */
+    overflow-x: hidden; /* Oculta rolagem horizontal */
+    padding-top: 20px; /* Espaçamento no topo */
     padding: 10px;
     border: 1px solid #ccc;
     margin-top: 5px;
@@ -108,6 +131,7 @@ a{
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
 /* Oculta o container dos checkboxes de categoria por padrão */
 #category-options {
     /* Esta linha é a CRÍTICA para remover o filtro que aparece por engano */
@@ -183,7 +207,6 @@ a{
     align-items: center;
     gap: 15px;
     text-align: center;
-    
 }
 
 #modal-product-details img {
