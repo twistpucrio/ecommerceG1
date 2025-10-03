@@ -22,13 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemEl = document.createElement('div');
             itemEl.className = 'favorite-item';
             itemEl.innerHTML = `
+            <div class="product-item">
                 <img src="${product.image}" alt="${product.name}" width="180" height="200">
                 <div class="info">
                     <h3>${product.name}</h3>
                     <div class="price">R$${product.price.toFixed(2)}</div>
                 </div>
                 <button id="removeIndividualFav" class="remove-from-favorites-btn" data-product-id="${product.id}">Remover dos favoritos</button>
-            `;
+            <\div>
+                `;
             favoritesListEl.appendChild(itemEl);
         });
     }

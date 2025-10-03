@@ -93,7 +93,7 @@ body {
     border-radius: 16px; 
     background: #eafaf3;
     box-shadow: 0 2px 8px rgba(59,156,119,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.5s;
     object-fit: cover;
     cursor: pointer;
     display: inline-block;
@@ -145,7 +145,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 12px;
-    padding: 18px 0 8px 0;
+    padding: 18px 450px 8px 0;
 }
 
 #busca {
@@ -157,7 +157,7 @@ body {
 }
 
 #btn-busca {
-    background: #3b9c77;
+    background: #1e7c58;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -168,7 +168,7 @@ body {
 }
 
 #btn-busca:hover {
-    background: #2e7d5a;
+    background: #2e7d598a;
 }
 
 /* Responsivo */
@@ -218,6 +218,7 @@ body {
     border-radius: 8px;
     display: inline-block;
     cursor: pointer;
+    margin-left: 850px;
     transition: background-color 0.3s ease;
 }
 
