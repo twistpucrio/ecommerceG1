@@ -27,3 +27,13 @@ body{
 #cart h1{
     text-align: center;
 }
+
+#cart{
+    margin-left: 400px;
+}
+
+.product-item{
+    width: 500px;
+    margin-left: 240px;
+    margin-bottom: 20px;
+}

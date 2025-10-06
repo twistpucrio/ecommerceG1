@@ -5,43 +5,57 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkoutBtn = document.getElementById('finalizarCompraBtn')
   const clearCartBtn = document.getElementById("clearcart-btn");
 
-  function renderCart() {
-    // A chamada api.getCart() retorna um objeto com 'products' (array de IDs) e 'total'.
-    const cartData = api.getCart();
-    const cartProductIds = cartData.products;
+function renderCart() {
+  // A chamada api.getCart() retorna um objeto com 'products' (array de IDs) e 'total'.
+  const cartData = api.getCart();
+  const cartProductIds = cartData.products;
 
-    // Usa a promessa dos produtos para encontrar os detalhes
-    api.listProducts().then(allProducts => {
-      const cartItemDetails = cartProductIds.map(productId => {
-        return allProducts.find(p => p.id === productId);
-      }).filter(p => p);
+  // Usa a promessa dos produtos para encontrar os detalhes
+  api.listProducts().then(allProducts => {
+    // 1) Agrega quantidades por ID
+    const qtyById = cartProductIds.reduce((acc, id) => {
+      const key = String(id); // normaliza tipo (string/number)
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
 
-      // Calcula o total com base nos produtos encontrados
-      const total = cartItemDetails.reduce((acc, item) => acc + item.price, 0);
+    // 2) Constrói a lista final (detalhes + count), apenas itens únicos
+    const cartItemDetails = Object.entries(qtyById)
+      .map(([id, count]) => {
+        const prod = allProducts.find(p => String(p.id) === id);
+        return prod ? { ...prod, count } : null;
+      })
+      .filter(Boolean);
 
-      if (cartItemDetails.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-        checkoutBtn.style.display = 'none';
-      } else {
-        cartItemsContainer.innerHTML = '';
-        cartItemDetails.forEach(item => {
-          const itemEl = document.createElement('div');
-          itemEl.className = 'cart-item';
-          itemEl.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" width="60" height="60">
-            <div class="info">
-              <h4>${item.name}</h4>
-              <div>R$${item.price.toFixed(2)}</div>
-            </div>
-            <button class="remover" id="removeIndividual" data-product-id="${item.id}">Remover</button>
-          `;
-          cartItemsContainer.appendChild(itemEl);
-        });
-        checkoutBtn.style.display = 'block';
-      }
-      cartTotalEl.textContent = `Total: R$${total.toFixed(2)}`;
-    });
-  }
+    // 3) Total considerando a quantidade
+    const total = cartItemDetails.reduce((acc, item) => acc + (item.price * item.count), 0);
+
+    if (cartItemDetails.length === 0) {
+      cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+      checkoutBtn.style.display = 'none';
+    } else {
+      cartItemsContainer.innerHTML = '';
+      cartItemDetails.forEach(item => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+        <div class="product-item">
+          <img src="${item.image}" alt="${item.name}" width="60" height="60">
+          <div class="info">
+            <h4>${item.name}</h4>
+            <h4>${item.count}</h4>
+            <div>R$${item.price.toFixed(2)}</div>
+          </div>
+          <button class="remover" id="removeIndividual" data-product-id="${item.id}">Remover</button>
+        <\div>
+        `;
+        cartItemsContainer.appendChild(itemEl);
+      });
+      checkoutBtn.style.display = 'block';
+    }
+    cartTotalEl.textContent = `Total: R$${total.toFixed(2)}`;
+  });
+}
 
 
   if (clearCartBtn) {
@@ -69,4 +83,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
+ 
