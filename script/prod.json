@@ -4,28 +4,32 @@
                 "name": "Barraca de acampamento",
                 "price": 420.99,
                 "category":"camping",
-                "image": "img/barraca.png"
+                "image": "img/barraca.png",
+                "description": "Aventure-se sem preocupações! Nossa barraca oferece montagem rápida (sistema de varetas auto-encaixáveis) e excelente resistência. <br/><br/> Capacidade: 3 a 4 pessoas.<br/><br/> Material: Poliéster impermeável (coluna d'água de 1500mm).<br/><br/> Dimensões Montada: 2,10m x 2,10m x 1,30m (C x L x A). <br/><br/>Peso: 3,5 kg."
             },
             {
                 "id": 2,
                 "name": "Saco de dormir",
                 "price": 155.99,
                 "category":"camping",
-                "image": "img/sacodedormiraberto.png"
+                "image": "img/sacodedormiraberto.png",
+                "description":"Durma como em casa, mesmo sob as estrelas.<br/><br/> Temperatura de Conforto: 5°C a 12°C.<br/><br/> Material: Revestimento externo em Poliéster 190T e enchimento em fibra sintética oca (200g/m²). <br/><br/>Dimensões: 2,20m x 0,80m (aberto).<br/><br/> Detalhe: Possui zíper duplo e capuz ajustável para retenção máxima de calor."
             },
             {
                 "id": 3,
                 "name": "Mochila de trilha",
                 "price": 230.00,
                 "category":"camping",
-                "image":"img/mochila camping.png"
+                "image":"img/mochila camping.png",
+                "description":"Espaço, conforto e durabilidade.<br/><br/> Capacidade: 50 Litros.<br/><br/> Material: Nylon Ripstop de alta resistência à abrasão.<br/><br/> Características: Possui capa de chuva embutida, sistema de ventilação nas costas (Airflow) e fitas laterais para compressão e amarração de equipamentos."
             },
             {
                 "id": 4,
                 "name": "Luvas de boxe",
                 "price": 56.90,
                 "category":"luta",
-                "image": "img/luta2.png"
+                "image": "img/luta2.png",
+                "description": "Potencialize seu treino com máximo de proteção.<br/><br/> Material: Couro sintético PU de alta durabilidade.<br/><br/> Tamanhos Disponíveis: 10 oz, 12 oz, 14 oz.<br/><br/> Características: Preenchimento interno em espuma injetada para absorção de choque superior. Fechamento em velcro largo no punho para ajuste firme e estabilidade."
                 
             },
             {
@@ -33,118 +37,136 @@
                 "name": "Whey Protein",
                 "price": 100.00,
                 "category":"suplementos",
-                "image": "img/wheyprotein.png"
+                "image": "img/wheyprotein.png",
+                "description": "O combustível essencial para sua recuperação.<br/><br/> Peso Líquido: 900g. <br/><br/>Sabor: Chocolate.<br/><br/> Informação Nutricional: 24g de proteína por dose, baixo teor de carboidratos e gorduras. <br/><br/>Detalhe: 100% puro Whey Protein Concentrado (WPC)."
             },
             {
                 "id": 6,
                 "name": "Ômega 3",
                 "price": 80.00,
                 "category":"suplementos",
-                "image": "img/omega3.png"
+                "image": "img/omega3.png",
+                "description":"Cuidado completo para saúde cardiovascular e cerebral. <br/><br/>Quantidade: 120 Cápsulas. <br/><br/>Dose Recomendada: 2 cápsulas por dia. <br/><br/>Composição por Dose: 1000mg de óleo de peixe, fornecendo 540mg de EPA e 360mg de DHA. <br/><br/>Detalhe: Livre de metais pesados."
             },
             {
                 "id": 7,
                 "name": "Barra de proteína",
                 "price": 12.00,
                 "category":"suplementos",
-                "image": "img/barrinhaptvanila.png"
+                "image": "img/barrinhaptvanila.png",
+                "description":"O lanche perfeito para levar na bolsa. <br/><br/>Peso: 40g por barra. Sabor: Baunilha (ou Chocolate/Amendoim). <br/><br/>Informação Nutricional: 15g de proteína e 4g de fibra por barra.<br/><br/> Detalhe: Cobertura de chocolate sem açúcar."
             },
             {
                 "id": 8,
                 "name": "Raquete de Beach Tennis",
                 "price": 500.00,
                 "category":"tennis",
-                "image": "img/raquetebeach.png"
+                "image": "img/raquetebeach.png",
+                "description":"Domine a areia com potência e controle.<br/><br/> Material: Carbono 3K (Frame e Face). <br/><br/>Peso: 330-340g. <br/><br/>Espessura: 22mm.<br/><br/> Detalhe: Equilíbrio médio-alto e superfície com micro-grânulos para melhor efeito (spin) na bola."
             },
             {
                 "id": 9,
                 "name": "Bola de Beach Tennis",
                 "price": 100.00,
                 "category":"tennis",
-                "image": "img/bolatenis.png"
+                "image": "img/bolatenis.png",
+                "description":"Qualidade profissional para suas partidas. Conteúdo: Pacote com 3 bolas.<br/><br/> Tipo: Pressurização leve. <br/><br/>Material: Borracha com feltro especial de alta visibilidade. <br/><br/>Detalhe: Atende aos padrões da Federação Internacional de Tênis (ITF Stage 2)."
             },
             {
                 "id": 10,
                 "name": "Grip para a raquete",
                 "price": 20.00,
                 "category":"tennis",
-                "image": "img/grip.png"
+                "image": "img/grip.png",
+                "description":"Tenha a pegada perfeita. <br/><br/> Material: Poliuretano (PU) super absorvente. <br/><br/> Detalhe: Superfície texturizada para máxima aderência, mesmo com mãos suadas. Fácil de aplicar e longa durabilidade."
             },
             {
                 "id": 11,
                 "name":"Touca para natação",
                 "price": 45.00,
                 "category":"natacao",
-                "image":"img/touca.png"
+                "image":"img/touca.png",
+                "description":"Essencial para hidrodinâmica e proteção.<br/><br/> Material: 100% Silicone de alta elasticidade. <br/><br/>Tamanho: Único (adulto). <br/><br/>Características: Antialérgico, resistente ao cloro e projetado para não prender ou puxar os cabelos."
             },
             {
                 "id": 12,
                 "name": "Óculos para natação",
                 "price": 50.90,
                 "category":"natacao",
-                "image": "img/oculos natação.png"
+                "image": "img/oculos natação.png",
+                "description":"Visão cristalina sob a água.<br/><br/> Lentes: Policarbonato com tratamento anti-embaçante e proteção UV. <br/><br/>Tira: Silicone ajustável.<br/><br/> Detalhe: Narizeira intercambiável em 3 tamanhos diferentes para encaixe perfeito em qualquer rosto."
             },
             {
                 "id": 13,
                 "name": "Pé de pato",
                 "price": 120.90,
                 "category":"natacao",
-                "image":"img/pé de pato.png"
+                "image":"img/pé de pato.png",
+                "description":"Aumente sua força e velocidade.<br/><br/> Material: Borracha termoplástica macia.<br/><br/> Tamanhos: P, M, G. <br/><br/>Benefícios: Aumenta a propulsão e fortalece a musculatura das pernas, melhorando a técnica de chute."
             },
             {
                 "id": 14,
                 "name": "Capacete",
                 "price": 40.00,
                 "category":"ciclismo",
-                "image": "img/capaceteciclismo.png"
+                "image": "img/capaceteciclismo.png",
+                "description":"Segurança, ventilação e aerodinâmica. <br/><br/>Material: Casco externo em policarbonato (tecnologia In-Mold) e EPS interno. <br/><br/>Ventilação: 18 entradas/saídas de ar. <br/><br/>Peso: Aproximadamente 280g. <br/><br/>Ajuste: Sistema de retenção traseiro com dial (roldana) para ajuste fino."
             },
             {
                 "id": 15,
                 "name": "Luvas para ciclismo",
                 "price": 50.90,
                 "category":"ciclismo",
-                "image": "img/luvaciclismo.png"
+                "image": "img/luvaciclismo.png",
+                "description":"Conforto e controle em longos percursos.<br/><br/> Material: Dorso em Lycra elástica, palma em couro sintético com gel.<br/><br/> Características: Almofadas de gel anti-choque em pontos de pressão e tecido atoalhado no polegar para secar o suor."
             },
             {
                 "id": 16,
                 "name": "Garrafa",
                 "price": 56.90,
                 "category":"ciclismo",
-                "image":"img/garrafa.png"
+                "image":"img/garrafa.png",
+                "description":"Mantenha-se hidratado sem parar. <br/><br/>Capacidade: 750ml. Material: Polipropileno (PP), livre de BPA.<br/><br/> Detalhe: Bico ergonômico com sistema Push-Pull para abertura rápida e fácil. Design compatível com todos os suportes padrão de bicicleta."
             },
             {
                 "id": 17,
                 "name": "Bola de futebol",
                 "price": 99.90,
                 "category":"bola",
-                "image": "img/bolafutebol.png"
+                "image": "img/bolafutebol.png",
+                "description":"Qualidade e precisão para o campo. <br/><br/>Tamanho: Oficial (nº 5). <br/><br/>Material: PU texturizado. <br/><br/>Construção: 32 gomos costurados à máquina para maior resistência. <br/><br/>Detalhe: Câmara de butil para retenção de ar duradoura."
             },
             {
                 "id": 18,
                 "name": "Bola de vôlei",
                 "price": 78.90,
                 "category":"bola",
-                "image": "img/bolavolei.png"
+                "image": "img/bolavolei.png",
+                "description":"Toque suave para excelência no passe e saque. <br/><br/>Tamanho: Oficial (nº 5). <br/><br/>Material: Couro sintético macio. <br/><br/>Peso: 260-280g.<br/><br/> Detalhe: Acabamento externo com painéis colados para um toque consistente e macio, reduzindo o impacto nos braços."
             },
             {
                 "id": 19,
                 "name": "Bola de basquete",
                 "price": 90.00,
                 "category":"bola",
-                "image": "img/bolabasquete.png"
+                "image": "img/bolabasquete.png",
+                "description":"O controle que o jogo exige. <br/><br/>Tamanho: Oficial (nº 7).<br/><br/> Material: Borracha vulcanizada de alta performance. <br/><br/>Detalhe: Superfície granulada para ótima aderência e canais profundos para melhor controle no drible. Adequada para uso indoor e outdoor."
             },
             {
                 "id": 20,
                 "name": "Protetor bucal",
                 "price": 29.90,
                 "category":"luta",
-                "image": "img/protetorbucal.png"
+                "image": "img/protetorbucal.png",
+                "description": "Segurança e ajuste perfeito.<br/><br/> Material: Silicone termomoldável (EVA). <br/><br/>Características: Produto atóxico, que se molda aos dentes após aquecimento em água. Acompanha estojo higiênico para transporte."
+
             },
             {
                 "id": 21,
                 "name": "Saco de pancadas",
                 "price": 200.00,
                 "category":"luta",
-                "image": "img/sacopancada.png"
+                "image": "img/sacopancada.png",
+                "description":"Durabilidade para treinos pesados. <br/><br/> Material Externo: Lona sintética reforçada. <br/><br/> Dimensões: 90cm de altura x 30cm de diâmetro.  <br/><br/>Detalhe: Enviado vazio (para enchimento com retalhos ou areia) para facilitar o transporte. Inclui correntes e gancho para fixação no teto."
             }
         ]}

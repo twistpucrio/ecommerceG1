@@ -61,12 +61,14 @@ body {
 }
 
 .img-principal {
+
     width: 100vw;             
     height: 550px;
     border-radius: 0;         
     margin: 0;                
     display: block;           
     box-shadow: none;         
+
 }
 
 /* Esportes favoritos */
