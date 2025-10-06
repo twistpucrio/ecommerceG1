@@ -99,7 +99,6 @@ body {
     border-radius: 90px; 
     background: #eafaf3;
     border: 6px solid #fff;
-    box-shadow: 0 8px 20px rgba(59,156,119,0.25);
     transition: transform 0.2s, box-shadow 0.3s;
     object-fit: cover;
     cursor: pointer;
@@ -108,7 +107,7 @@ body {
 
 .esporte:hover {
     transform: scale(1.13);
-    box-shadow: 0 8px 28px rgba(59,156,119,0.35); 
+    box-shadow: 0 8px 28px rgba(27, 71, 54, 0.35); 
 }
 
 /* Categorias */
@@ -124,7 +123,7 @@ body {
 }
 
 #categorias h2 {
-    color: #3b9c77;
+    color:  #296d4e;
     font-size: 1.3rem;
     margin: 18px 0 8px 0;
     font-family: 'DM Sans', sans-serif;
@@ -136,7 +135,7 @@ body {
     width: 320px;
     height: 220px;
     margin-bottom: 18px;
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: 0 2px 8px rgba(59,156,119,0.10);
     transition: transform 0.2s;
     display: inline-block;
@@ -159,7 +158,7 @@ body {
     width: 260px;
     padding: 8px 12px;
     border-radius: 8px;
-    border: 1px solid #3b9c77;
+    border: 1px solid  #296d4e;
     font-size: 1rem;
 }
 
@@ -216,13 +215,13 @@ body {
 .btn-produtos {
     /* Seus estilos de botão aqui */
     background-color: #ffffff;
-    color: #2e7d5a;
+    color: #296d4e;
     padding: 12px 24px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     border: 2px solid #2e7d5a;
-    border-radius: 8px;
+    border-radius: 14px;
     display: inline-block;
     cursor: pointer;
     margin-left: 850px;
@@ -232,4 +231,176 @@ body {
 .btn-produtos:hover {
     background-color: #e0e6e4;
     color: #1a4f38;
+}
+
+/* Paleta de Cores */
+:root {
+    --dark-green: #004d40; /* Verde Escuro da MOVE */
+    --light-text: #e0f2f1; /* Texto Claro */
+    --hover-color: #4db6ac; /* Verde Suave para Hover */
+    --divider-color: #00695c; /* Verde um pouco mais claro para divisores */
+}
+
+/* Estilo Base do Rodapé */
+.footer-move {
+    background-color: var(--dark-green);
+    color: var(--light-text);
+    font-family: Arial, sans-serif;
+    padding-top: 40px;
+    font-size: 14px;
+}
+
+/* Container principal (Limita a largura e centraliza) */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    gap: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+/* Estilo das Colunas */
+.footer-col {
+    flex-basis: 18%; /* Define a largura base de cada coluna (5 colunas) */
+    min-width: 150px; /* Garante que não fiquem muito estreitas */
+}
+
+.footer-col h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #ffffff; /* Títulos brancos puros */
+}
+
+/* Links da Lista */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* Coluna de Destaque (Primeira Coluna) */
+.footer-col-highlight {
+    flex-basis: 25%; /* Dá mais espaço para a primeira coluna */
+    min-width: 250px;
+}
+
+.highlight-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.highlight-info {
+    margin-top: 0;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+/* Links de Redes Sociais */
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--divider-color);
+    color: var(--light-text);
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--hover-color);
+}
+
+/* Seção de Direitos Autorais e Políticas (Rodapé inferior) */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.policy-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.policy-links a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+.copyright {
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+/* Responsividade: Telas Menores (Ex: Tablets) */
+@media (max-width: 900px) {
+    .footer-container {
+        justify-content: flex-start; /* Alinha as colunas à esquerda */
+    }
+
+    .footer-col {
+        flex-basis: 45%; /* Duas colunas por linha */
+        margin-bottom: 20px;
+    }
+    
+    .footer-col-highlight {
+        flex-basis: 100%; /* Coluna de destaque ocupa a linha inteira */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo-and-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .policy-links a {
+        margin: 5px 8px; /* Reduz o espaçamento entre os links de política */
+    }
 }

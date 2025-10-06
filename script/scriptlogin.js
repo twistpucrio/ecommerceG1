@@ -55,8 +55,8 @@ function renderAuthView() {
 
         // monta card simples com dados (mostre só o que quiser)
         perfilEl.innerHTML = `
-        <div class="perfil-card">
-          <h2>Olá, ${user.nome || user.username}! Você está logado(a). <br> Dados do perfil:</h2>
+        <br><br><br><br><br><br><div class="perfil-card">
+          <h2>Olá, ${user.nome || user.username}! Você está logado(a).<br> <br> Dados do perfil:</h2>
           <p><strong>Usuário:</strong> ${user.username}</p>
           ${user.email ? `<p><strong>E-mail:</strong> ${user.email}</p>` : ''}
           ${user.cpf ? `<p><strong>CPF:</strong> ${user.cpf}</p>` : ''}

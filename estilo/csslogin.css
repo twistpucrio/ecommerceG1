@@ -1,3 +1,18 @@
+body {
+    margin: 0; 
+    min-height: 100vh;
+    
+    
+    justify-content: center; 
+    
+    align-items: center; 
+    
+    background-color: #f7f9fb; 
+}
+
+
+
+
 a{
     text-decoration: none;
 }
@@ -41,7 +56,7 @@ button, #btnCadastro {
   text-align: center;
   box-sizing: border-box;
 
-  background-color: #2c7b39; /* verde */
+  background-color: #2c7b39; 
   color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: background-color 0.2s, transform 0.1s;
@@ -54,6 +69,7 @@ button:active {
   background-color: #1e4f24;
   transform: translateY(0);
 }
+
 
 #btnLogout {
   width: 60%;               
@@ -73,23 +89,69 @@ button:active {
   transform: translateY(0);
 }
 
-.perfil-card{
+.perfil-card {
   width: 90%;
   max-width: 400px;
-  margin: 12px auto 0;
-  padding: 16px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  margin: 30px auto 20px; 
+  padding: 24px; 
+  
+  background: #ffffff; 
+  border: none; 
+  border-radius: 16px; 
+  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 
+              0 2px 8px rgba(0, 0, 0, 0.04); 
+  
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-.perfil-card h2{
-  margin: 0 0 8px;
-  font-size: 18px;
+
+.perfil-card:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12),
+                0 4px 12px rgba(0, 0, 0, 0.06);
 }
-.perfil-card p{
-  margin: 6px 0;
-  color: #374151;
+
+.perfil-card h2 {
+  margin: 0 0 20px; 
+  font-size: 20px; 
+  text-align: center;
+  color: #1f2937; 
+  font-weight: 600; 
+}
+
+.perfil-card p {
+  margin: 10px 0; 
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.5;
+  border-bottom: 1px dashed #f3f4f6; 
+  padding-bottom: 8px;
+}
+
+.perfil-card p:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.perfil-card button, .perfil-card .btn-sair {
+    display: block;
+    width: 100%; 
+    padding: 12px;
+    margin-top: 25px;
+    
+    background-color: #ef4444; 
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    
+    transition: background-color 0.3s ease;
+}
+
+.perfil-card button:hover, .perfil-card .btn-sair:hover {
+    background-color: #dc2626; 
 }
 
 #removeIndividual{
@@ -106,7 +168,7 @@ button:active {
   text-align: center;
   box-sizing: border-box;
 
-  background-color: rgba(8, 80, 36, 0.959); /* verde */
+  background-color: rgba(8, 80, 36, 0.959); 
   color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: background-color 0.2s, transform 0.1s;
@@ -127,7 +189,7 @@ button:active {
   text-align: center;
   box-sizing: border-box;
 
-  background-color: rgba(8, 80, 36, 0.959); /* verde */
+  background-color: rgba(8, 80, 36, 0.959);
   color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: background-color 0.2s, transform 0.1s;
