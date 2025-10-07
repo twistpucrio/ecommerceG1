@@ -49,24 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===================================================
-    // FUNÇÕES DE AÇÃO (MODAL E CARRINHO)
-    // ===================================================
 
-    // Função para verificar se um produto está nos favoritos
     function isProductFavorited(productId) {
         const favorites = api.getFavorites(); 
         return favorites.some(p => p.id === productId);
     }
 
-    // Função de manipulação de produto reutilizável (Adiciona ao Carrinho/Favoritos)
     async function handleProductAction(productId, target) {
         try {
             const products = await api.listProducts();
             const productToHandle = products.find(p => p.id === productId);
             if (!productToHandle) return;
 
-            // Verifica se é o botão de favorito (tanto da lista quanto do modal)
             if (target.classList.contains('add-to-favorites-btn') || target.classList.contains('modal-fav-btn')) {
                 const wasAdded = api.addToFavorites(productToHandle);
                 if (wasAdded) {
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     target.classList.add('favorited'); 
                     target.innerHTML = '⭐'; 
                 } else {
-                    // Se foi removido
                     alert(`${productToHandle.name} removido dos favoritos!`);
                     target.classList.remove('favorited'); 
                     target.innerHTML = '☆'; 
@@ -90,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para atualizar o estado visual de todos os botões de favorito de um produto específico
     function updateFavoriteButtons(productId) {
         const isFavorited = isProductFavorited(productId);
         document.querySelectorAll(`.add-to-favorites-btn[data-product-id="${productId}"], .modal-fav-btn[data-product-id="${productId}"]`).forEach(btn => {

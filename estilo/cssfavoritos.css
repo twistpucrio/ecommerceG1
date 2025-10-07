@@ -8,6 +8,6 @@ a{
     color: #3b9c77;
 }
 
-#removeIndividualFav{
-    margin-bottom: 10px;
+.modal-add-to-cart-btn{
+    margin-top: 10px;
 }
