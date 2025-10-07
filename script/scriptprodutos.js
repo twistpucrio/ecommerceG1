@@ -400,3 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadAndFilterProducts(false);
 });
+
+ const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+        if (isLoggedIn) {
+            document.getElementById('fav').style.display = 'inline-block';
+        }
