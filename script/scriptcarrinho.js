@@ -83,4 +83,9 @@ function renderCart() {
 
 });
 
+const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+        if (isLoggedIn) {
+            document.getElementById('fav').style.display = 'inline-block';
+        }
+
  
