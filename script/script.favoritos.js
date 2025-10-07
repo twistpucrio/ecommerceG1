@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    
+
     function renderFavorites(favorites) {
         favoritesListEl.innerHTML = '';
         if (favorites.length === 0) {
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="price">R$${product.price.toFixed(2)}</div>
                 </div>
                 <button id="removeIndividualFav" class="remove-from-favorites-btn" data-product-id="${product.id}">Remover dos favoritos</button>
+                <button class="modal-add-to-cart-btn" data-product-id="${product.id}">Adicionar ao carrinho</button>
             <\div>
                 `;
             favoritesListEl.appendChild(itemEl);
@@ -54,3 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFavorites(favorites);
 });
 
+ const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+        if (isLoggedIn) {
+            document.getElementById('fav').style.display = 'inline-block';
+        }

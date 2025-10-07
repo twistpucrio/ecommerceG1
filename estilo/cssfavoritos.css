@@ -2,3 +2,12 @@ a{
     text-decoration: none;
 }
 
+[href*='html']{
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b9c77;
+}
+
+#removeIndividualFav{
+    margin-bottom: 10px;
+}
