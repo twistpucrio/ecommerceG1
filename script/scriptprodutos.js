@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const buscaInputEl = document.getElementById('busca');
     const btnBuscaEl = document.getElementById('btn-busca');
 
+    // 💡 CORREÇÃO 1: Adicionar a referência do input de preço mínimo AQUI
+    const minPriceFilterInput = document.getElementById('min-price-filter-input');
     const priceFilterInput = document.getElementById('price-filter-input');
+
     const categoryOptionsEl = document.getElementById('category-options');
     const categoryFilterBtn = document.getElementById('category-filter-btn');
     const applyFiltersBtn = document.getElementById('apply-filters-btn');
@@ -46,25 +49,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===================================================
-    // FUNÇÕES DE AÇÃO (MODAL E CARRINHO)
-    // ===================================================
 
-    // Função de manipulação de produto reutilizável (Adiciona ao Carrinho/Favoritos)
-    function handleProductAction(productId, target) {
-        api.listProducts().then(products => {
+    function isProductFavorited(productId) {
+        const favorites = api.getFavorites(); 
+        return favorites.some(p => p.id === productId);
+    }
+
+    async function handleProductAction(productId, target) {
+        try {
+            const products = await api.listProducts();
             const productToHandle = products.find(p => p.id === productId);
             if (!productToHandle) return;
 
-            // Verifica se é o botão de favorito (tanto da lista quanto do modal)
             if (target.classList.contains('add-to-favorites-btn') || target.classList.contains('modal-fav-btn')) {
                 const wasAdded = api.addToFavorites(productToHandle);
-                alert(wasAdded ? `${productToHandle.name} adicionado aos favoritos! ❤️` : `Esse produto já foi adicionado aos favoritos.`);
+                if (wasAdded) {
+                    alert(`${productToHandle.name} adicionado aos favoritos! ⭐`);
+                    target.classList.add('favorited'); 
+                    target.innerHTML = '⭐'; 
+                } else {
+                    alert(`${productToHandle.name} removido dos favoritos!`);
+                    target.classList.remove('favorited'); 
+                    target.innerHTML = '☆'; 
+                }
+                updateFavoriteButtons(productId);
+
             } else {
                 api.addToCart(productToHandle);
                 alert(`${productToHandle.name} adicionado ao carrinho!`);
             }
-        }).catch(err => console.error('Erro ao manipular o produto:', err));
+        } catch (err) {
+            console.error('Erro ao manipular o produto:', err);
+        }
+    }
+
+    function updateFavoriteButtons(productId) {
+        const isFavorited = isProductFavorited(productId);
+        document.querySelectorAll(`.add-to-favorites-btn[data-product-id="${productId}"], .modal-fav-btn[data-product-id="${productId}"]`).forEach(btn => {
+            if (isFavorited) {
+                btn.classList.add('favorited');
+                btn.innerHTML = '⭐';
+            } else {
+                btn.classList.remove('favorited');
+                btn.innerHTML = '☆';
+            }
+        });
     }
 
     // Listener para os botões DENTRO do Modal
@@ -102,15 +131,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function openProductModal(product) {
         if (!productModalEl || !modalContentEl) return;
 
+        const isFav = isProductFavorited(product.id);
+        const favButtonClass = isFav ? 'add-to-favorites-btn modal-fav-btn favorited' : 'add-to-favorites-btn modal-fav-btn';
+        const favButtonText = isFav ? '⭐' : '☆';
+
         // 1. Monta o HTML do modal
         const favoriteBtnHtml = isLoggedIn
-            ? `<button class="add-to-favorites-btn modal-fav-btn" data-product-id="${product.id}">Adicionar aos Favoritos ❤️</button>`
+            ? `<button class="${favButtonClass}" data-product-id="${product.id}">${favButtonText} Adicionar aos Favoritos</button>`
             : '';
 
         modalContentEl.innerHTML = `
             <img src="${product.image}" alt="${product.name}" width="300" height="350">
             <h2 id="modal-product-name">${product.name}</h2>
-            <p id="modal-product-description">${product.description || 'Descrição não disponível.'}</p>
+            
+            <div class="modal-description-box">
+                <h3>Detalhes do Produto</h3>
+                <p id="modal-product-description">${product.description || 'Descrição não disponível.'}</p>
+            </div>
             <p class="modal-product-price">R$${Number(product.price).toFixed(2)}</p>
             <button class="modal-add-to-cart-btn" data-product-id="${product.id}">Adicionar ao Carrinho</button>
             ${favoriteBtnHtml}
@@ -134,8 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
         products.forEach(product => {
             const itemEl = document.createElement('div');
             itemEl.className = 'product-item';
+
+            const isFav = isLoggedIn && isProductFavorited(product.id);
+            const favButtonClass = isFav ? 'add-to-favorites-btn favorited' : 'add-to-favorites-btn';
+            const favButtonText = isFav ? '⭐' : '☆';
+
             const favoriteBtnHtml = isLoggedIn
-                ? `<button class="add-to-favorites-btn" data-product-id="${product.id}">❤️</button>`
+                ? `<button class="${favButtonClass}" data-product-id="${product.id}">${favButtonText}</button>`
                 : '';
             itemEl.innerHTML = `
                 <img src="${product.image}" alt="${product.name}" width="180" height="200">
@@ -200,16 +242,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     shouldApplyURLCategory = false;
                 }
 
-                // 3. FILTRO DE PREÇO MÁXIMO
-                const maxPrice = parseFloat(priceFilterInput.value);
+                // 💡 CORREÇÃO 2: Simplificar a lógica e usar as variáveis de referência globais
+                
+                // 3. FILTRO DE PREÇO MÍNIMO
+                const minPrice = parseFloat(minPriceFilterInput ? minPriceFilterInput.value : '');
+                if (!isNaN(minPrice) && minPrice >= 0) {
+                    filteredProducts = filteredProducts.filter(product =>
+                       product.price >= minPrice
+                    );
+                }
+                
+                // 4. FILTRO DE PREÇO MÁXIMO
+                const maxPrice = parseFloat(priceFilterInput ? priceFilterInput.value : '');
                 if (!isNaN(maxPrice) && maxPrice > 0) {
                     filteredProducts = filteredProducts.filter(product =>
                         product.price <= maxPrice
                     );
                 }
+                
+                // Opcional: Alerta se o mínimo for maior que o máximo
+                if (!isNaN(minPrice) && !isNaN(maxPrice) && minPrice > maxPrice) {
+                     // Não é necessário um alert, pois o filtro já resultará em lista vazia ou menor, mas ajuda o usuário
+                     console.warn('Atenção: O preço mínimo é maior que o preço máximo.');
+                }
             }
 
-            // 4. Aplica Categoria da URL se nenhum filtro visual foi aplicado
+            // 5. Aplica Categoria da URL se nenhum filtro visual foi aplicado
             if (shouldApplyURLCategory && categoriaURL !== 'todos') {
                 filteredProducts = filteredProducts.filter(p => String(p.category) === String(categoriaURL));
             }
@@ -224,24 +282,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- NOVO LISTENER PRINCIPAL DE PRODUTOS ---
-    // Este listener lida com: 1) Abrir Modal (clique no item) E 2) Ação de Botão (Carrinho/Favoritos)
     productListEl.addEventListener('click', (event) => {
         const target = event.target;
-        // Encontra o container do produto pai (item da lista)
         const itemEl = target.closest('.product-item');
 
         // 1. Ação no Botão (Carrinho/Favorito)
         if (target.tagName === 'BUTTON' && target.dataset.productId) {
             const productId = parseInt(target.dataset.productId, 10);
             handleProductAction(productId, target);
-            event.stopPropagation(); // Impede que o clique no botão abra o modal
+            event.stopPropagation();
             return;
         }
 
         // 2. Ação no Item (Abrir Modal)
         if (itemEl) {
-            // Se o clique não foi em um botão de ação, mas sim no item:
-            // Pegamos o ID de qualquer botão dentro do item
             const productIdEl = itemEl.querySelector('[data-product-id]');
             if (!productIdEl) return; 
             
@@ -265,6 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clearFiltersBtn) {
         clearFiltersBtn.addEventListener('click', () => {
+            // 💡 LÓGICA DE LIMPEZA DO PREÇO MÍNIMO (Se a referência estiver correta)
+            if (minPriceFilterInput) minPriceFilterInput.value = ''; 
+            
             priceFilterInput.value = '';
             categoryOptionsEl.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
                 checkbox.checked = false;
@@ -276,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (categoryFilterBtn) {
         categoryFilterBtn.addEventListener('click', () => {
-            // Alterna a VISIBILIDADE dos checkboxes
             categoryOptionsEl.classList.toggle('active');
         });
     }
@@ -289,17 +345,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- EVENT LISTENERS PARA FECHAR O MODAL ---
 
-    // Fecha ao clicar no 'X'
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeProductModal);
     }
 
-    // Fecha ao clicar no overlay
     if (modalOverlayEl) {
         modalOverlayEl.addEventListener('click', closeProductModal);
     }
 
-    // Fecha ao apertar a tecla ESC
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && productModalEl && productModalEl.style.display === 'block') {
             closeProductModal();
@@ -309,26 +362,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA DE INICIALIZAÇÃO ---
 
-    // 1. Cria os checkboxes de categoria.
     createCategoryCheckboxes();
 
-    // 💡 LÓGICA FINAL PARA OCULTAR O FILTRO DE CATEGORIA VISUAL
     const categoriaSelecionadaURL = getCategoryFromUrl();
     const termoDeBuscaAtual = buscaInputEl ? buscaInputEl.value : getQueryFromUrl();
 
 
     if (categoriaSelecionadaURL !== 'todos' || termoDeBuscaAtual.trim() !== '') {
 
-        // Verificamos se o elemento existe antes de tentar manipulá-lo
         if (categoryFilterGroupEl) {
-            // Esconde o grupo completo do filtro de categoria (botão + checkboxes)
             categoryFilterGroupEl.style.display = 'none';
         }
     }
 
     if (buscaInputEl) buscaInputEl.value = getQueryFromUrl();
 
-    // Lógica para esconder o grupo de filtros quando a categoria está na URL
     if (categoriaSelecionadaURL !== 'todos') {
         if (categoryFilterGroupEl) {
             categoryFilterGroupEl.style.display = 'none';
@@ -340,10 +388,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Preenche o campo de busca (se existir) com o valor da URL.
     if (buscaInputEl) buscaInputEl.value = getQueryFromUrl();
 
-    // 3. Carrega os produtos com os filtros iniciais (apenas URL/Query).
     loadAndFilterProducts(false);
-
 });
+
+ const isLoggedIn = !!localStorage.getItem('ecommerce_session');
+        if (isLoggedIn) {
+            document.getElementById('fav').style.display = 'inline-block';
+        }

@@ -6,19 +6,24 @@
     <title>Favoritos</title>
     <link rel="stylesheet" href="estilo/cssindex.css">
     <link rel="stylesheet" href="estilo/cssprodutos.css">
-    <link rel="stylesheet" href="estilo/csslogin.css">
-    <link rel="stylesheet" href="estilo/csscarrinho.css">
+    <link rel="stylesheet" href="estilo/cssfavoritos.css">
+
+
+
 </head>
 <body>
 <header id="cab">
         <div id="logo">
             <!-- Substitua por uma imagem de logo se tiver -->
-            <h1>MOVE</h1>
+            <a href="index.html"><h1>MOVE</h1></a>
+
         </div>
         <nav id="icones">
             <a href="carrinho.html"> <img src="img/carrinhogpt.png" alt="Carrinho" class="icone" id="car"></a>
+            <a href="favoritos.html"> <img src="img/favoritogpt.png" style="display:none" alt="Favoritos" class="icone"id="fav"></a>
             <a href="login.html"> <img src="img/logingpt.png" alt="Login" class="icone"></a>
         </nav>
+        
     </header>
 
 
@@ -26,13 +31,12 @@
         <a href="produtos.html">Continuar comprando</a>
     </nav>
 
+    
     <h1>Meus Favoritos</h1>
-    <div id="favorites-list">
-        </div>
+    <div id="favorites-list"></div>
 
     <script src="script/EcommerceAPI.js"></script>
     <script src="script/script.favoritos.js"></script>
-
     
   
 </body>
