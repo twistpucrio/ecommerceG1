@@ -12,7 +12,10 @@ document.getElementById('botaoLogin').onclick = async () => {
         }
     } else {
     document.getElementById('btnCadastro').style.display = 'block';
-}};
+}
+
+
+};
 
 // Se existe sessão, mostra botão
 const sess = localStorage.getItem('ecommerce_session');
@@ -23,6 +26,7 @@ if (sess) {
         api.logout();
     };
 }
+
 
 // Helpers rápidos para sessão/usuários
 function getSession() {
