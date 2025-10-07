@@ -5,40 +5,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkoutBtn = document.getElementById('finalizarCompraBtn')
   const clearCartBtn = document.getElementById("clearcart-btn");
 
-function renderCart() {
-  // A chamada api.getCart() retorna um objeto com 'products' (array de IDs) e 'total'.
-  const cartData = api.getCart();
-  const cartProductIds = cartData.products;
+  function renderCart() {
+    // A chamada api.getCart() retorna um objeto com 'products' (array de IDs) e 'total'.
+    const cartData = api.getCart();
+    const cartProductIds = cartData.products;
 
-  // Usa a promessa dos produtos para encontrar os detalhes
-  api.listProducts().then(allProducts => {
-    // 1) Agrega quantidades por ID
-    const qtyById = cartProductIds.reduce((acc, id) => {
-      const key = String(id); // normaliza tipo (string/number)
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
+    // Usa a promessa dos produtos para encontrar os detalhes
+    api.listProducts().then(allProducts => {
+      // 1) Agrega quantidades por ID
+      const qtyById = cartProductIds.reduce((acc, id) => {
+        const key = String(id); // normaliza tipo (string/number)
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
 
-    // 2) Constrói a lista final (detalhes + count), apenas itens únicos
-    const cartItemDetails = Object.entries(qtyById)
-      .map(([id, count]) => {
-        const prod = allProducts.find(p => String(p.id) === id);
-        return prod ? { ...prod, count } : null;
-      })
-      .filter(Boolean);
+      // 2) Constrói a lista final (detalhes + count), apenas itens únicos
+      const cartItemDetails = Object.entries(qtyById)
+        .map(([id, count]) => {
+          const prod = allProducts.find(p => String(p.id) === id);
+          return prod ? { ...prod, count } : null;
+        })
+        .filter(Boolean);
 
-    // 3) Total considerando a quantidade
-    const total = cartItemDetails.reduce((acc, item) => acc + (item.price * item.count), 0);
+      // 3) Total considerando a quantidade
+      const total = cartItemDetails.reduce((acc, item) => acc + (item.price * item.count), 0);
 
-    if (cartItemDetails.length === 0) {
-      cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-      checkoutBtn.style.display = 'none';
-    } else {
-      cartItemsContainer.innerHTML = '';
-      cartItemDetails.forEach(item => {
-        const itemEl = document.createElement('div');
-        itemEl.className = 'cart-item';
-        itemEl.innerHTML = `
+      if (cartItemDetails.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        checkoutBtn.style.display = 'none';
+      } else {
+        cartItemsContainer.innerHTML = '';
+        cartItemDetails.forEach(item => {
+          const itemEl = document.createElement('div');
+          itemEl.className = 'cart-item';
+          itemEl.innerHTML = `
         <div class="product-item">
           <img src="${item.image}" alt="${item.name}" width="60" height="60">
           <div class="info">
@@ -49,13 +49,13 @@ function renderCart() {
           <button class="remover" id="removeIndividual" data-product-id="${item.id}">Remover</button>
         <\div>
         `;
-        cartItemsContainer.appendChild(itemEl);
-      });
-      checkoutBtn.style.display = 'block';
-    }
-    cartTotalEl.textContent = `Total: R$${total.toFixed(2)}`;
-  });
-}
+          cartItemsContainer.appendChild(itemEl);
+        });
+        checkoutBtn.style.display = 'block';
+      }
+      cartTotalEl.textContent = `Total: R$${total.toFixed(2)}`;
+    });
+  }
 
 
   if (clearCartBtn) {
@@ -75,17 +75,16 @@ function renderCart() {
 
   renderCart(); // Chamada inicial para renderizar o carrinho ao carregar a página
 
-  
+
   document.getElementById('finalizarCompraBtn').addEventListener('click', () => {
-  const ok = api.checkout();
-  if (ok) renderCart();  
-});
+    const ok = api.checkout();
+    if (ok) renderCart();
+  });
 
 });
 
 const isLoggedIn = !!localStorage.getItem('ecommerce_session');
-        if (isLoggedIn) {
-            document.getElementById('fav').style.display = 'inline-block';
-        }
+if (isLoggedIn) {
+  document.getElementById('fav').style.display = 'inline-block';
+}
 
- 
