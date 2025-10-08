@@ -10,9 +10,6 @@ body {
     background-color: #f7f9fb; 
 }
 
-
-
-
 a{
     text-decoration: none;
 }
@@ -194,3 +191,59 @@ button:active {
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: background-color 0.2s, transform 0.1s;
 }
+
+/* Centraliza e define a largura do formulário */
+#cadastroForm {
+  width: min(520px, 92vw);
+  margin: 16px auto 40px;   /* centralizado */
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 6px;             /* espaço entre linhas (input e seu erro) */
+}
+
+/* Inputs ocupam toda a largura do form */
+#cadastroForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+
+/* Destaque do input inválido */
+#cadastroForm input.invalido {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.12);
+}
+
+/* O bloquinho de erro fica logo abaixo do input e com a MESMA largura */
+#cadastroForm .erro {
+  display: block;              /* vira uma linha abaixo do input */
+  width: 100%;                 /* mesma largura do input/form */
+  box-sizing: border-box;
+  margin: 2px 0 10px;          /* cola no input, afasta do próximo */
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(185,28,28,.06);
+  animation: fadeIn .25s ease;
+}
+
+/* some completamente se não houver texto */
+#cadastroForm .erro:empty {
+  display: none;
+}
+
+/* micro animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+

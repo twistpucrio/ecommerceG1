@@ -35,20 +35,20 @@
 .product-item .price { font-weight: bold; color: #2c7b39; margin-bottom: 12px; }
 
 /* botão verde padrão — NÃO pega no coração */
-.product-item button:not(.add-to-favorites-btn) {
+.product-item button:not(.add-to-favorites-btn,.modal-fav-btn) {
   background: #2c7b39; color: #fff; border: none;
   padding: 10px 16px; border-radius: 8px; cursor: pointer;
 }
 
-.product-item button:not(.add-to-favorites-btn):hover { background: #2c7b399f; }
+.product-item button:not(.add-to-favorites-btn,.modal-fav-btn):hover { background: #2c7b399f; }
 
 /* coração transparente */
-.product-item .add-to-favorites-btn {
+.product-item .add-to-favorites-btn,.modal-fav-btn {
   background: transparent; border: 0; box-shadow: none;
   padding: 4px; line-height: 1; cursor: pointer;
 }
 
-.product-item .add-to-favorites-btn:hover { transform: scale(1.1); }
+.product-item .add-to-favorites-btn,.modal-fav-btn:hover { transform: scale(1.1); }
 
 a{ 
   text-decoration: None;
@@ -226,7 +226,7 @@ h1{
     font-weight: bold;
 }
 
-.product-item button.add-to-favorites-btn {
+.product-item button.add-to-favorites-btn,.modal-fav-btn {
     font-size: 1.3em; 
 }
 
@@ -281,21 +281,10 @@ h1{
     background-color: #e63946; /* Um pouco mais escuro ao passar o mouse */
 }
 
-/* Estilos para o botão Adicionar ao Carrinho */
-.modal-add-to-cart-btn {
-    background-color: #2c7b39; /* Um verde chamativo */
-    color: white;
-    border: 2px solid  #173f1e;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 10px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
+
 
 .modal-add-to-cart-btn:hover {
     background-color: #27a85a;
     border-color: #27a85a;
 }
+
