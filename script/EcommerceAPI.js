@@ -176,7 +176,7 @@ class EcommerceAPI {
             localStorage.setItem('ecommerce_session', JSON.stringify({ username }));
             return true; // logou
         }
-        alert('Usuário ou senha inválidos.');
+        alert('Usuário ou senha inválidos. Tente novamente ou cadastre-se.');
         return false;
     }
 
@@ -207,7 +207,7 @@ class EcommerceAPI {
         users.push(user);
         this._setUsers(users);
 
-        alert('Cadastro concluído! Faça login.');
+        
         return true;
     }
 
