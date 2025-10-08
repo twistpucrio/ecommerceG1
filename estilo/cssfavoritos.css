@@ -11,3 +11,20 @@ a{
 .modal-add-to-cart-btn{
     margin-top: 10px;
 }
+
+#contcomp {
+  display: inline-block;
+  background: #3b9c77;
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-decoration: none;     /* se for um <a> */
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(44, 123, 57, 0.25);
+  margin: 10px;
+}

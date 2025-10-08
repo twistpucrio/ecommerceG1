@@ -1,0 +1,161 @@
+const api = new EcommerceAPI();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('cadastroForm');
+    // Mapeamento dos campos para validação
+    const campos = [
+        { input: document.getElementById('nome'), erroId: 'erroNome', validar: validarNomeCompleto },
+        { input: document.getElementById('aniversario'), erroId: 'erroAniversario', validar: validarAniversario },
+        { input: document.getElementById('cpf'), erroId: 'erroCPF', validar: validarCPF },
+        { input: document.getElementById('cep'), erroId: 'erroCEP', validar: validarCEP },
+        { input: document.getElementById('email'), erroId: 'erroEmail', validar: validarEmail },
+        { input: document.getElementById('loginUsuario'), erroId: 'erroUsu', validar: validarUsuario },
+        { input: document.getElementById('loginSenha'), erroId: 'erroSenha', validar: validarSenha }
+    ];// --- FUNÇÕES DE VALIDAÇÃO ---
+    function validarNomeCompleto(input) {
+        if (input.validity.valueMissing) return 'O campo Nome Completo é obrigatório.';
+        if (input.validity.tooShort) return `O Nome deve ter pelo menos ${input.minLength} caracteres.`;
+        return '';
+    }
+    function validarAniversario(input) {
+        if (input.validity.valueMissing) return 'O campo Data de Nascimento é obrigatório.';
+        const data = input.value;
+        const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+        if (!regex.test(data)) return 'Formato inválido. Use DD/MM/AAAA.';
+        const [_, dia, mes, ano] = data.match(regex);
+        const dataObj = new Date(ano, mes - 1, dia);
+        if (dataObj.getFullYear() !== parseInt(ano) || dataObj.getMonth() !== parseInt(mes) - 1 || dataObj.getDate() !== parseInt(dia)) {
+            return 'Data inválida.';
+        }
+        const idade = new Date().getFullYear() - dataObj.getFullYear();
+        if (idade < 0 || idade > 120) return 'Idade deve ser entre 0 e 120 anos.';
+        return '';
+    }
+    function validarCPF(input) {
+        if (input.validity.valueMissing) return 'O campo CPF é obrigatório.';
+        let cpf = input.value.replace(/[^\d]/g, '');
+        if (cpf.length !== 11) return 'O CPF deve ter exatamente 11 dígitos.';
+        if (/^(\d)\1{10}$/.test(cpf)) return 'CPF inválido (sequência repetida).';
+        // Algoritmo oficial de validação de CPF
+        let soma = 0;
+        for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
+        let resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.charAt(9))) return 'CPF inválido (dígito verificador incorreto).';
+        soma = 0;
+        for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.charAt(10))) return 'CPF inválido (dígito verificador incorreto).';
+        return '';
+    }
+    function validarCEP(input) {
+        if (input.validity.valueMissing) return 'O campo CEP é obrigatório.';
+        let cep = input.value.replace(/[^\d]/g, '');
+        if (cep.length !== 8) return 'O CEP deve ter exatamente 8 dígitos.';
+        return '';
+    } function validarEmail(input) {
+        if (input.validity.valueMissing) return 'O campo Email é obrigatório.';
+        if (input.validity.typeMismatch) return 'Formato de email inválido (ex: seu@email.com).';
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(input.value)) return 'Email deve conter @ e domínio válido.';
+        return '';
+    }
+    function validarUsuario(input) {
+        if (input.validity.valueMissing) return 'O campo Usuário é obrigatório.';
+        if (input.validity.tooShort) return `O Usuário deve ter pelo menos ${input.minLength} caracteres.`;
+        return '';
+    }
+    function validarSenha(input) {
+        const value = (input.value || '').trim();
+
+        if (!value) return 'O campo Senha é obrigatório.';
+        if (value.length < (input.minLength || 8)) {
+            return `A Senha deve ter pelo menos ${input.minLength || 8} caracteres.`;
+        }
+
+        // Pelo menos 1 maiúscula (inclui acentos) e 1 dígito
+        const temMaiuscula = /[A-ZÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ]/.test(value);
+        const temNumero = /\d/.test(value);
+
+        if (!temMaiuscula || !temNumero) {
+            return 'Senha deve ter 8+ caracteres, 1 maiúscula e 1 número.';
+        }
+
+        return '';
+    }
+
+    // --- FUNÇÃO PARA EXIBIR ERROS ---
+    function exibirErro(input, mensagem, erroId) {
+        const erroElement = document.getElementById(erroId);
+        erroElement.textContent = mensagem;
+        if (mensagem) {
+            input.classList.add('invalido');
+            input.setCustomValidity('Inválido');
+        } else {
+            input.classList.remove('invalido');
+            input.setCustomValidity('');
+        }
+    }
+    // --- EVENTOS ---
+    // Validação em tempo real (blur)
+    campos.forEach(({ input, erroId, validar }) => {
+        input.addEventListener('blur', () => {
+            const mensagem = validar(input);
+            exibirErro(input, mensagem, erroId);
+        });
+
+        document.getElementById('loginSenha').addEventListener('input', (e) => {
+            const msg = validarSenha(e.target);
+            exibirErro(e.target, msg, 'erroSenha');
+        });
+
+
+        // Opcional: Máscara para CPF e CEP
+        if (input.id === 'cpf') {
+            input.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            });
+        }
+        if (input.id === 'cep') {
+            input.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            });
+        }
+    });
+
+    form.addEventListener('submit', async (evento) => {
+        let formValido = true;
+        campos.forEach(({ erroId }) => document.getElementById(erroId).textContent = '');
+        campos.forEach(({ input, erroId, validar }) => {
+            const mensagem = validar(input);
+            exibirErro(input, mensagem, erroId);
+            if (mensagem) formValido = false;
+        });
+        if (!formValido) {
+            evento.preventDefault();
+            alert('Por favor, corrija os campos destacados em vermelho.');
+            return;
+        }
+        evento.preventDefault(); // <-- Adicione aqui para evitar reload mesmo com sucesso
+        if (api) {
+            const sucesso = await api.cadastro();
+            if (sucesso) {
+                alert('Cadastro realizado com sucesso! Faça login');
+                window.location.href = 'login.html';
+            } else {
+                alert('Erro no cadastro. Tente novamente.');
+            }
+        } else {
+            alert('Cadastro simulado com sucesso! (Implemente a API para envio real)');
+            form.reset();
+            campos.forEach(({ erroId }) => document.getElementById(erroId).textContent = '');
+        }
+    });
+});
+
