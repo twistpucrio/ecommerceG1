@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Monta o HTML do modal
         const favoriteBtnHtml = isLoggedIn
-            ? `<button class="${favButtonClass}" data-product-id="${product.id}">${favButtonText} Adicionar aos Favoritos</button>`
+            ? `<button class="${favButtonClass}" data-product-id="${product.id}">${favButtonText} </button>`
             : '';
 
         modalContentEl.innerHTML = `
