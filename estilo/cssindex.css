@@ -94,20 +94,39 @@ body {
 }
 
 .esporte {
-    width: 170px;
-    height: 170px;
-    border-radius: 90px; 
-    background: #eafaf3;
-    border: 6px solid #fff;
-    transition: transform 0.2s, box-shadow 0.3s;
-    object-fit: cover;
-    cursor: pointer;
-    display: inline-block;
+       width: 170px;
+       height: 170px;
+       border-radius: 50%; /* Mantenha 50% para círculo perfeito (era 90px, que é metade de 180px, mas 50% é mais preciso) */
+       background: #eafaf3;
+       border: 6px solid #fff;
+       transition: transform 0.2s, box-shadow 0.3s;
+       cursor: pointer;
+       display: inline-block;
+       text-decoration: none; /* Remove sublinhado do link */
+       /* Centraliza o conteúdo (img) dentro do container */
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       overflow: hidden; /* Garante que a img não vaze do círculo */
 }
 
 .esporte:hover {
     transform: scale(1.13);
     box-shadow: 0 8px 28px rgba(27, 71, 54, 0.35); 
+   }
+/* Estilo para as imagens dentro dos containers */
+.esporte img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre o círculo inteiro, cortando se necessário (centraliza por default) */
+    object-position: center center; /* Centraliza explicitamente (horizontal e vertical) */
+    border-radius: 50%; /* Herda o formato circular da img, se necessário */
+    transition: transform 0.2s; /* Opcional: anima a img no hover do container */
+}
+
+.esporte:hover img {
+    /* Opcional: leve zoom na img no hover para mais interatividade */
+    transform: scale(1.05);
 }
 
 /* Categorias */
