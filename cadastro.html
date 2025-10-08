@@ -41,7 +41,7 @@
     <span class="erro" id="erroSenha"></span>
     <button type="submit" id="botaoCadastro">Cadastrar usuário e fazer login</button>
   </form>
-  
+
   <script src="script/EcommerceAPI.js"></script>
   <script>
     const api = new EcommerceAPI();
@@ -112,12 +112,24 @@
         return '';
       }
       function validarSenha(input) {
-        if (input.validity.valueMissing) return 'O campo Senha é obrigatório.';
-        if (input.validity.tooShort) return `A Senha deve ter pelo menos ${input.minLength} caracteres.`;
-        const regexForte = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-        if (!regexForte.test(input.value)) return 'Senha deve ter 8+ caracteres, 1 maiúscula e 1 número.';
+        const value = (input.value || '').trim();
+
+        if (!value) return 'O campo Senha é obrigatório.';
+        if (value.length < (input.minLength || 8)) {
+          return `A Senha deve ter pelo menos ${input.minLength || 8} caracteres.`;
+        }
+
+        // Pelo menos 1 maiúscula (inclui acentos) e 1 dígito
+        const temMaiuscula = /[A-ZÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ]/.test(value);
+        const temNumero = /\d/.test(value);
+
+        if (!temMaiuscula || !temNumero) {
+          return 'Senha deve ter 8+ caracteres, 1 maiúscula e 1 número.';
+        }
+
         return '';
       }
+
       // --- FUNÇÃO PARA EXIBIR ERROS ---
       function exibirErro(input, mensagem, erroId) {
         const erroElement = document.getElementById(erroId);
@@ -137,6 +149,13 @@
           const mensagem = validar(input);
           exibirErro(input, mensagem, erroId);
         });
+
+        document.getElementById('loginSenha').addEventListener('input', (e) => {
+          const msg = validarSenha(e.target);
+          exibirErro(e.target, msg, 'erroSenha');
+        });
+
+
         // Opcional: Máscara para CPF e CEP
         if (input.id === 'cpf') {
           input.addEventListener('input', (e) => {
@@ -173,7 +192,7 @@
         if (api) {
           const sucesso = await api.cadastro();
           if (sucesso) {
-            alert('Cadastro realizado com sucesso! Redirecionando para login...');
+            alert('Cadastro realizado com sucesso! Faça login');
             window.location.href = 'login.html';
           } else {
             alert('Erro no cadastro. Tente novamente.');
