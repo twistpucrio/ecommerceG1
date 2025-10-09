@@ -11,10 +11,12 @@ body {
     background: #f7faf9;
     color: #222;
 }
-
-/* Header */
+a{
+    text-decoration: None;
+}
+ 
 #cab {
-    background: linear-gradient(90deg, #3b9c77 60%, #2e7d5a 100%);
+    background:#3b9c77;
     height: 90px;
     padding: 0 40px;
     display: flex;
@@ -61,9 +63,8 @@ body {
 }
 
 .img-principal {
-
     width: 100vw;             
-    height: 550px;
+    height: 530px;
     border-radius: 0;         
     margin: 0;                
     display: block;           
