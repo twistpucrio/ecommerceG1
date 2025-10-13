@@ -39,16 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
           const itemEl = document.createElement('div');
           itemEl.className = 'cart-item';
           itemEl.innerHTML = `
-        <div class="product-item">
-          <img src="${item.image}" alt="${item.name}" width="60" height="60">
-          <div class="info">
-            <h4>${item.name}</h4>
-            <h4>${item.count}</h4>
-            <div>R$${item.price.toFixed(2)}</div>
-          </div>
-          <button class="remover" id="removeIndividual" data-product-id="${item.id}">Remover</button>
-        <\div>
-        `;
+          <div class="product-item" data-product-id="${item.id}">  <img src="${item.image}" alt="${item.name}" width="60" height="60">
+           <div class="info">
+          <h4>${item.name}</h4>
+
+                       <div class="quantity-control">
+                           <button class="qty-btn-minus" data-product-id="${item.id}" ${item.count <= 1 ? 'disabled' : ''}>-</button>
+                           <span class="product-qty" data-product-id="${item.id}">${item.count}</span>
+                           <button class="qty-btn-plus" data-product-id="${item.id}">+</button>
+                       </div>
+                       <div>R$${(item.price * item.count).toFixed(2)}</div> </div>
+           <button class="remover" data-product-id="${item.id}">Remover Item</button>
+          <\div>
+          `;
           cartItemsContainer.appendChild(itemEl);
         });
         checkoutBtn.style.display = 'block';
@@ -66,14 +69,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   cartItemsContainer.addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON' && event.target.dataset.productId) {
-      const productId = parseInt(event.target.dataset.productId, 10);
-      api.removeItemFromCart(productId);
-      renderCart();
-    }
-  });
+    const target = event.target;
+    if (target.tagName !== 'BUTTON') return;
 
-  renderCart(); // Chamada inicial para renderizar o carrinho ao carregar a página
+    const productId = parseInt(target.dataset.productId, 10);
+    if (isNaN(productId)) return;
+
+
+    // 1. Botão de AUMENTAR QUANTIDADE (+)
+    if (target.classList.contains('qty-btn-plus')) {
+        api.addOneToCart(productId); // Novo método na API
+        renderCart();
+        return;
+    }
+
+    if (target.classList.contains('qty-btn-minus')) {
+    
+      const productQtyEl = document.querySelector(`.product-qty[data-product-id="${productId}"]`);
+      const currentQty = productQtyEl ? parseInt(productQtyEl.textContent, 10) : 0;
+      
+      if (currentQty > 1) {
+          api.removeOneFromCart(productId); // Novo método na API
+          renderCart();
+      } else {
+       
+          console.log("Não é possível reduzir mais. Use o botão 'Remover Tudo' ou altere a lógica.");
+      }
+      return;
+  }
+  
+  if (target.classList.contains('remover')) {
+
+      api.removeAllItemsOfProduct(productId); 
+      renderCart();
+      return;
+  }
+});
+    
+
+  renderCart(); 
 
 
   document.getElementById('finalizarCompraBtn').addEventListener('click', () => {

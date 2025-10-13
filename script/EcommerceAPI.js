@@ -99,6 +99,39 @@ class EcommerceAPI {
         }
     }
 
+
+    addOneToCart(productId) {
+        if (typeof productId === 'number') {
+            this.cart.push(productId);
+            this.saveCart();
+        }
+    }
+
+    removeOneFromCart(productId) {
+        const index = this.cart.findIndex(id => id === productId);
+        
+        if (index > -1) {
+            this.cart.splice(index, 1);
+            this.saveCart();
+            return true; 
+        }
+        return false; 
+    }
+
+    removeAllItemsOfProduct(productId) {
+        const initialLength = this.cart.length;
+        this.cart = this.cart.filter(id => id !== productId);
+        
+        if (this.cart.length !== initialLength) {
+            this.saveCart();
+            return true;
+        }
+        return false;
+    }
+    
+    // ...
+// }
+
     getCart() {
         return {
             products: [...this.cart],
