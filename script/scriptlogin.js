@@ -52,7 +52,7 @@ function renderAuthView() {
 
     if (sess && sess.username) {
         const user = getUsers().find(u => u.username === sess.username) || { username: sess.username };
-
+        document.getElementById('btnCadastro').style.display = 'None';
         // monta card simples com dados (mostre só o que quiser)
         perfilEl.innerHTML = `
         <br><br><br><br><br><br><div class="perfil-card">
