@@ -11,7 +11,24 @@
   margin-left: 30px;
 }
 
-/* card padrão */
+h1 {
+    font-family: 'DM Sans', 'Figtree', sans-serif; 
+    font-size: 2.5rem; 
+    font-weight: 550; 
+    
+    color: #000000; 
+    padding-bottom: 5px; 
+    
+    margin-left: 20px;
+    margin-top: 35px; 
+    margin-bottom: 30px; 
+    
+    display: inline-block; 
+    position: relative;
+}
+
+
+
 .product-item {
   background: #fff;
   border: 1px solid #ddd;
@@ -288,3 +305,128 @@ h1{
     border-color: #27a85a;
 }
 
+/* --- CONFIGURAÇÃO DO CONTAINER PRINCIPAL --- */
+#filter-options-container {
+    max-width: 300px; /* Largura ideal para um painel lateral ou modal */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* Borda mais suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra mais discreta */
+    font-family: 'Figtree', sans-serif;
+}
+
+/* --- GRUPOS DE INPUTS (Preço) --- */
+.filter-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca os inputs um embaixo do outro */
+    gap: 15px; /* Espaço entre os inputs */
+}
+
+/* --- ESTILO DOS INPUTS DE PREÇO --- */
+#min-price-filter-input,
+#price-filter-input {
+    width: 100%; /* Ocupa a largura total do container */
+    padding: 10px 12px;
+    border: 1px solid #c0c0c0;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#min-price-filter-input::placeholder,
+#price-filter-input::placeholder {
+    color: #888;
+}
+
+#min-price-filter-input:focus,
+#price-filter-input:focus {
+    border-color: #3b9c77; /* Verde vibrante da MOVE ao focar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(59, 156, 119, 0.3);
+}
+
+/* --- BOTÃO DE CATEGORIA (Que abre o submenu) --- */
+#category-filter-btn {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #f7f7f7; /* Fundo cinza claro para destacar o botão de menu */
+    color: #2e7d5a;
+    font-weight: 600;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-family: 'Figtree', sans-serif;
+
+}
+
+#category-filter-btn:hover {
+    background-color: #eafaf3; /* Fundo mais claro no hover */
+    border-color: #3b9c77;
+}
+
+/* --- SUBMENU DE OPÇÕES DE CATEGORIA (Onde estarão os checkboxes) --- */
+#category-options {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fff;
+    /* Se você for esconder/mostrar o menu via JS, adicione a regra display: none aqui */
+}
+
+/* Estilo para os checkboxes e labels (assumindo que você insira HTML de label/checkbox aqui) */
+.filter-submenu label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #444;
+    font-family: 'Figtree', sans-serif;
+    cursor: pointer;
+}
+.filter-submenu input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #3b9c77; /* Cor de destaque verde para o check */
+}
+
+
+#apply-filters-btn,
+#clear-filters-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Figtree', sans-serif;
+
+}
+
+/* Botão Principal: Aplicar Filtros */
+#apply-filters-btn {
+    background-color: #3b9c77;
+    color: white;
+}
+
+#apply-filters-btn:hover {
+    background-color: #2e7d5a;
+}
+
+/* Botão Secundário: Limpar Filtros */
+#clear-filters-btn.clear {
+    background-color: #f0f0f0; /* Cinza muito suave */
+    color: #2e7d5a;
+    border: 1px solid #d0d0d0;
+}
+
+#clear-filters-btn.clear:hover {
+    background-color: #e0e0e0;
+}

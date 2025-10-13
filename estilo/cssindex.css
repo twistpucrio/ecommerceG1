@@ -1,5 +1,11 @@
 /* Reset básico */
-body, h1, h2, h3, p, ul, li {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,18 +17,19 @@ body {
     background: #f7faf9;
     color: #222;
 }
-a{
+
+a {
     text-decoration: None;
 }
- 
+
 #cab {
-    background:#3b9c77;
+    background: #3b9c77;
     height: 90px;
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(59,156,119,0.08);
+    box-shadow: 0 2px 8px rgba(59, 156, 119, 0.08);
 }
 
 #logo h1 {
@@ -43,32 +50,32 @@ a{
 .icone {
     height: 38px;
     width: 55px;
-    box-shadow: 0 2px 8px rgba(59,156,119,0.10);
+    box-shadow: 0 2px 8px rgba(59, 156, 119, 0.10);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
 }
 
 .icone:hover {
     transform: scale(1.12);
-    box-shadow: 0 4px 16px rgba(59,156,119,0.18);
+    box-shadow: 0 4px 16px rgba(59, 156, 119, 0.18);
 }
 
 /* Principal banner */
 #principal {
-    margin: 0;                
-    padding: 0;               
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .img-principal {
-    width: 100vw;             
+    width: 100vw;
     height: 530px;
-    border-radius: 0;         
-    margin: 0;                
-    display: block;           
-    box-shadow: none;         
+    border-radius: 0;
+    margin: 0;
+    display: block;
+    box-shadow: none;
 
 }
 
@@ -95,34 +102,42 @@ a{
 }
 
 .esporte {
-       width: 170px;
-       height: 170px;
-       border-radius: 50%; /* Mantenha 50% para círculo perfeito (era 90px, que é metade de 180px, mas 50% é mais preciso) */
-       background: #eafaf3;
-       border: 6px solid #fff;
-       transition: transform 0.2s, box-shadow 0.3s;
-       cursor: pointer;
-       display: inline-block;
-       text-decoration: none; /* Remove sublinhado do link */
-       /* Centraliza o conteúdo (img) dentro do container */
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       overflow: hidden; /* Garante que a img não vaze do círculo */
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    /* Mantenha 50% para círculo perfeito (era 90px, que é metade de 180px, mas 50% é mais preciso) */
+    background: #eafaf3;
+    border: 6px solid #fff;
+    transition: transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    /* Remove sublinhado do link */
+    /* Centraliza o conteúdo (img) dentro do container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Garante que a img não vaze do círculo */
 }
 
 .esporte:hover {
     transform: scale(1.13);
-    box-shadow: 0 8px 28px rgba(27, 71, 54, 0.35); 
-   }
+    box-shadow: 0 8px 28px rgba(27, 71, 54, 0.35);
+}
+
 /* Estilo para as imagens dentro dos containers */
 .esporte img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cobre o círculo inteiro, cortando se necessário (centraliza por default) */
-    object-position: center center; /* Centraliza explicitamente (horizontal e vertical) */
-    border-radius: 50%; /* Herda o formato circular da img, se necessário */
-    transition: transform 0.2s; /* Opcional: anima a img no hover do container */
+    object-fit: cover;
+    /* Cobre o círculo inteiro, cortando se necessário (centraliza por default) */
+    object-position: center center;
+    /* Centraliza explicitamente (horizontal e vertical) */
+    border-radius: 50%;
+    /* Herda o formato circular da img, se necessário */
+    transition: transform 0.2s;
+    /* Opcional: anima a img no hover do container */
 }
 
 .esporte:hover img {
@@ -136,14 +151,14 @@ a{
     max-width: 900px;
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(59,156,119,0.07);
+    box-shadow: 0 2px 16px rgba(59, 156, 119, 0.07);
     padding: 30px 0;
     text-align: center;
-    
+
 }
 
 #categorias h2 {
-    color:  #296d4e;
+    color: #296d4e;
     font-size: 1.3rem;
     margin: 18px 0 8px 0;
     font-family: 'DM Sans', sans-serif;
@@ -151,12 +166,13 @@ a{
     text-align: center;
     margin-left: 50px;
 }
+
 .categoria {
     width: 320px;
     height: 220px;
     margin-bottom: 18px;
     border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(59,156,119,0.10);
+    box-shadow: 0 2px 8px rgba(59, 156, 119, 0.10);
     transition: transform 0.2s;
     display: inline-block;
     margin: 10px;
@@ -167,13 +183,13 @@ a{
 }
 
 #top-bar {
-  display: flex;
-  justify-content: center;   
-  align-items: center;       
-  gap: 12px;
-  padding: 18px 500px 0 8px;       
-  width: 100%;
-  box-sizing: border-box;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 500px 0 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -181,9 +197,9 @@ a{
     width: 260px;
     padding: 8px 12px;
     border-radius: 8px;
-    border: 1px solid  #296d4e;
+    border: 1px solid #296d4e;
     font-size: 1rem;
-    
+
 }
 
 #btn-busca {
@@ -208,22 +224,28 @@ a{
         height: auto;
         padding: 16px;
     }
+
     #logo h1 {
         font-size: 1.5rem;
     }
+
     .img-principal {
         max-height: 180px;
     }
+
     .esportes-lista {
         gap: 18px;
     }
+
     .esporte {
         width: 70px;
         height: 70px;
     }
+
     #categorias {
         padding: 16px 0;
     }
+
     .categoria {
         width: 100px;
         height: 70px;
@@ -259,10 +281,14 @@ a{
 
 /* Paleta de Cores */
 :root {
-    --dark-green: #004d40; /* Verde Escuro da MOVE */
-    --light-text: #e0f2f1; /* Texto Claro */
-    --hover-color: #4db6ac; /* Verde Suave para Hover */
-    --divider-color: #00695c; /* Verde um pouco mais claro para divisores */
+    --dark-green: #004d40;
+    /* Verde Escuro da MOVE */
+    --light-text: #e0f2f1;
+    /* Texto Claro */
+    --hover-color: #4db6ac;
+    /* Verde Suave para Hover */
+    --divider-color: #00695c;
+    /* Verde um pouco mais claro para divisores */
 }
 
 /* Estilo Base do Rodapé */
@@ -280,7 +306,8 @@ a{
     margin: 0 auto;
     padding: 0 20px 40px;
     display: flex;
-    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    flex-wrap: wrap;
+    /* Permite que as colunas quebrem em telas menores */
     gap: 20px;
     justify-content: space-between;
     border-bottom: 1px solid var(--divider-color);
@@ -288,15 +315,18 @@ a{
 
 /* Estilo das Colunas */
 .footer-col {
-    flex-basis: 18%; /* Define a largura base de cada coluna (5 colunas) */
-    min-width: 150px; /* Garante que não fiquem muito estreitas */
+    flex-basis: 18%;
+    /* Define a largura base de cada coluna (5 colunas) */
+    min-width: 150px;
+    /* Garante que não fiquem muito estreitas */
 }
 
 .footer-col h4 {
     font-size: 16px;
     margin-bottom: 15px;
     font-weight: bold;
-    color: #ffffff; /* Títulos brancos puros */
+    color: #ffffff;
+    /* Títulos brancos puros */
 }
 
 /* Links da Lista */
@@ -322,7 +352,8 @@ a{
 
 /* Coluna de Destaque (Primeira Coluna) */
 .footer-col-highlight {
-    flex-basis: 25%; /* Dá mais espaço para a primeira coluna */
+    flex-basis: 25%;
+    /* Dá mais espaço para a primeira coluna */
     min-width: 250px;
 }
 
@@ -400,31 +431,80 @@ a{
 /* Responsividade: Telas Menores (Ex: Tablets) */
 @media (max-width: 900px) {
     .footer-container {
-        justify-content: flex-start; /* Alinha as colunas à esquerda */
+        justify-content: flex-start;
+        /* Alinha as colunas à esquerda */
     }
 
     .footer-col {
-        flex-basis: 45%; /* Duas colunas por linha */
+        flex-basis: 45%;
+        /* Duas colunas por linha */
         margin-bottom: 20px;
     }
-    
+
     .footer-col-highlight {
-        flex-basis: 100%; /* Coluna de destaque ocupa a linha inteira */
+        flex-basis: 100%;
+        /* Coluna de destaque ocupa a linha inteira */
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .logo-and-links {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 10px;
     }
-    
+
     .policy-links a {
-        margin: 5px 8px; /* Reduz o espaçamento entre os links de política */
+        margin: 5px 8px;
+        /* Reduz o espaçamento entre os links de política */
     }
+}
+
+.wrapper {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-family: sans-serif;
+    color: #fff;
+}
+
+.carousel {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slick-slide {
+    margin: 0;
+}
+
+.slick-slide img {
+    width: 100%;
+    height: 660px;
+    object-fit: cover;
+}
+
+.wrapper .slick-dots li button:before {
+    font-size: 20px !important;
+    color: white;
+}
+
+/*Controle do Carrossel*/
+.slick-dots {
+    bottom: -25px !important;
+}
+
+.slick-dots li.slick-active button::before {
+    color: #ffffff !important;
+}
+
+.slick-dots li button::before {
+    color: #ffffff !important;
+    font-size: 11px;
 }

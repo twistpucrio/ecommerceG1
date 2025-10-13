@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         checkoutBtn.style.display = 'block';
       }
-      cartTotalEl.textContent = `Total: R$${total.toFixed(2)}`;
+      cartTotalEl.textContent = `R$${total.toFixed(2)}`;
     });
   }
 
