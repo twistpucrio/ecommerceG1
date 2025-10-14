@@ -30,7 +30,10 @@ a {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 8px rgba(59, 156, 119, 0.08);
+    #cab{ position:relative; }
 }
+
+
 
 #logo h1 {
     color: #fff;
@@ -183,39 +186,41 @@ a {
 }
 
 #top-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 500px 0 8px;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
-
 #busca {
-    width: 260px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #296d4e;
-    font-size: 1rem;
-
+  flex: 0 1 300px; /* ocupa até 300px e encolhe bem no celular */
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #296d4e;
+  font-size: 1rem;
+  max-width: 90vw;
+  box-sizing: border-box;
 }
 
 #btn-busca {
-    background: #1e7c58;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 18px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+  background: #2c7b39;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #btn-busca:hover {
-    background: #2e7d598a;
+  background: #256a32;
 }
+
 
 /* Responsivo */
 @media (max-width: 700px) {
@@ -259,20 +264,18 @@ a {
 
 
 .btn-produtos {
-    /* Seus estilos de botão aqui */
-    background-color: #ffffff;
-    color: #296d4e;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    border: 2px solid #2e7d5a;
-    border-radius: 14px;
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 850px;
-    transition: background-color 0.3s ease;
+  background-color:#fff; color:#296d4e;
+  padding:12px 24px; font-size:20px; font-weight:700;
+  border:2px solid #2e7d5a; border-radius:14px;
+  display:block;                 /* vira bloco */
+  margin:24px auto 0;            /* centraliza */
+  text-align:center;
+  transition:background-color .3s;
+  width: 300px;
 }
+.btn-produtos:hover{ background:#e0e6e4; color:#1a4f38; }
+
+
 
 .btn-produtos:hover {
     background-color: #e0e6e4;
@@ -507,4 +510,119 @@ h2 {
 .slick-dots li button::before {
     color: #ffffff !important;
     font-size: 11px;
+}
+
+@media (max-width: 1280px) {
+  /* topo */
+  #cab { height: 80px; padding: 0 24px; }
+  #logo h1 { font-size: 1.9rem; letter-spacing: 1px; }
+  .icone { width: 44px; height: 32px; }
+
+  /* barra de busca (tira padding lateral gigante) */
+  #top-bar {
+    padding: 16px 0 0;
+    gap: 10px;
+  }
+  #busca {
+    width: clamp(220px, 36vw, 320px);
+  }
+  #btn-busca { padding: 8px 14px; }
+
+  /* carrossel */
+  .slick-slide img { height: 520px; }
+
+  /* esportes redondos */
+  .esportes-lista { gap: 28px; }
+  .esporte { width: 140px; height: 140px; }
+
+  /* bloco de categorias */
+  #categorias {
+    max-width: 840px;
+    padding: 24px 12px;
+  }
+  #categorias h2 { font-size: 1.15rem; margin-left: 0; }
+
+  .categoria {
+    width: 280px;
+    height: 190px;
+    margin: 10px 8px 18px;
+  }
+
+  /* botão “ver todos” centralizado (sem margin-left fixa) */
+  .btn-produtos {
+    display: block;
+    margin: 22px auto 0;
+  }
+}
+
+@media (max-width: 640px) {
+  /* header em coluna */
+  #cab {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding: 12px;
+  }
+  #logo h1 { font-size: 1.4rem; }
+  #icones { gap: 12px; }
+ 
+
+  /* busca central e fluida */
+  #top-bar {
+    padding: 12px 12px 0;
+    gap: 8px;
+    width: 100%;
+  }
+  #busca {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    font-size: .95rem;
+    padding: 8px 10px;
+  }
+  #btn-busca { padding: 8px 12px; font-size: .95rem; }
+
+  /* carrossel mais baixo pra caber na dobra */
+  .slick-slide img { height: 220px; }
+
+  /* seção “esportes favoritos” */
+  #esportes-favoritos { margin: 18px auto; padding: 6px 0; }
+  #esportes-favoritos h2 { font-size: 1.1rem; margin-bottom: 12px; }
+  .esportes-lista { gap: 14px; }
+  .esporte { width: 82px; height: 82px; border-width: 4px; }
+
+  /* categorias em coluna, cards menores */
+  #categorias {
+    margin: 18px 12px 28px;
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+  #categorias h2 {
+    display: block;
+    margin: 6px 0 12px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .categoria {
+    width: 100%;
+    max-width: 360px;
+    height: 160px;
+    margin: 10px auto;
+    border-radius: 12px;
+  }
+
+  /* botão “ver todos” 100% largura confortável */
+  .btn-produtos {
+    display: block;
+    width: calc(100% - 24px);
+    max-width: 360px;
+    margin: 16px auto 0;
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+
+  /* rodapé mais compacto */
+  .footer-container { gap: 12px; }
+  .footer-col { flex-basis: 48%; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
