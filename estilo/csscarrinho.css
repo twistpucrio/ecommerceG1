@@ -1,7 +1,6 @@
-
 #cart {
     max-width: 1000px;
-    margin: 30px auto; 
+    margin: 30px auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px #2e7d5a;
@@ -9,16 +8,16 @@
 
 
 .cart-items-container .product-item {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto 15px auto; 
+    margin: 0 auto 15px auto;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .cart-items-container .product-item img {
@@ -26,12 +25,12 @@
 }
 
 .cart-items-container .product-item .info {
-    flex-grow: 1; 
+    flex-grow: 1;
     margin: 0 15px;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    height: 60px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
 }
 
 .cart-items-container .product-item .info h4 {
@@ -40,15 +39,18 @@
 
 
 .quantity-control {
-    display: flex; /* Alinha os botões e o número */
+    display: flex;
+    /* Alinha os botões e o número */
     align-items: center;
     gap: 0;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    overflow: hidden; /* Garante que os cantos arredondados fiquem bonitos */
+    overflow: hidden;
+    /* Garante que os cantos arredondados fiquem bonitos */
     width: fit-content;
-    height: 35px; /* Altura uniforme para o grupo */
+    height: 35px;
+    /* Altura uniforme para o grupo */
 }
 
 .quantity-control button {
@@ -56,12 +58,13 @@
     border: none;
     color: #333;
     width: 35px;
-    height: 100%; /* Ocupa a altura do container */
+    height: 100%;
+    /* Ocupa a altura do container */
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     padding: 0;
-    line-height: 1; 
+    line-height: 1;
     transition: background-color 0.2s;
 }
 
@@ -79,15 +82,18 @@
     width: 30px;
     text-align: center;
     font-weight: bold;
-    color: #2e7d5a; /* Cor principal da sua marca */
+    color: #2e7d5a;
+    /* Cor principal da sua marca */
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-    line-height: 35px; /* Centraliza verticalmente o texto */
+    line-height: 35px;
+    /* Centraliza verticalmente o texto */
 }
 
 .cart-items-container .product-item button.remover {
-    background-color: #e57373; /* Um tom vermelho suave */
+    background-color: #e57373;
+    /* Um tom vermelho suave */
     color: white;
     padding: 8px 12px;
     border-radius: 4px;
@@ -95,24 +101,31 @@
     font-weight: normal;
     font-size: 0.9em;
     cursor: pointer;
-    margin-left: 10px; /* Garante espaçamento do controle de quantidade */
+    margin-left: 10px;
+    /* Garante espaçamento do controle de quantidade */
 }
 
 
 #cart-summary {
-    max-width: 800px; /* Limita a largura para alinhar o conteúdo */
-    margin: 20px auto 10px auto; /* Espaçamento */
+    max-width: 800px;
+    /* Limita a largura para alinhar o conteúdo */
+    margin: 20px auto 10px auto;
+    /* Espaçamento */
     padding-top: 15px;
-    border-top: 2px solid #e0f2f1; /* Linha de divisão sutil em verde claro */
-    text-align: right; /* Alinha o conteúdo à direita */
+    border-top: 2px solid #e0f2f1;
+    /* Linha de divisão sutil em verde claro */
+    text-align: right;
+    /* Alinha o conteúdo à direita */
 }
 
 #cart-total {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #2e7d5a; /* Destaque verde para o valor */
+    color: #2e7d5a;
+    /* Destaque verde para o valor */
     margin-bottom: 5px;
-    display: block; /* Garante que o total ocupe a linha para o link ir abaixo */
+    display: block;
+    /* Garante que o total ocupe a linha para o link ir abaixo */
 }
 
 /* Estiliza o texto "Total:" para ser menos dominante que o valor */
@@ -127,14 +140,18 @@
 /* Estilo para o link "Continuar comprando" */
 /* Como está solto no HTML, vamos alinhá-lo à direita */
 #cart a[href="produtos.html"] {
-    display: block; /* Ocupa a largura total para que a margin auto funcione (em teoria, ou para forçar a quebra de linha) */
+    display: block;
+    /* Ocupa a largura total para que a margin auto funcione (em teoria, ou para forçar a quebra de linha) */
     max-width: 800px;
-    margin: 5px auto 25px auto; /* Alinha no centro, mas o text-align right do container resolve */
-    text-align: right; /* Alinha o link à direita da página */
+    margin: 5px auto 25px auto;
+    /* Alinha no centro, mas o text-align right do container resolve */
+    text-align: right;
+    /* Alinha o link à direita da página */
     color: #555;
     text-decoration: none;
     font-size: 0.95rem;
-    padding-right: 10px; /* Pequeno espaçamento da borda */
+    padding-right: 10px;
+    /* Pequeno espaçamento da borda */
     transition: color 0.2s;
 }
 
@@ -146,10 +163,13 @@
 
 .cart-actions {
     display: flex;
-    justify-content: flex-end; /* Alinha os botões à direita */
+    justify-content: flex-end;
+    /* Alinha os botões à direita */
     max-width: 800px;
-    margin: 0 auto 30px auto; /* Centraliza o grupo de botões abaixo do resumo */
-    gap: 15px; /* Espaço entre os botões */
+    margin: 0 auto 30px auto;
+    /* Centraliza o grupo de botões abaixo do resumo */
+    gap: 15px;
+    /* Espaço entre os botões */
     padding: 0 10px;
 }
 
@@ -157,21 +177,24 @@
 
 #clearcart-btn,
 #finalizarCompraBtn {
-    padding: 15px 25px; /* Mais padding para parecer profissional */
+    padding: 15px 25px;
+    /* Mais padding para parecer profissional */
     font-size: 1.1rem;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    width: auto; /* Deixa o botão se ajustar ao conteúdo */
+    width: auto;
+    /* Deixa o botão se ajustar ao conteúdo */
 }
 
 /* Botão Principal: Finalizar Compra */
 #finalizarCompraBtn {
     background-color: #3b9c77;
     color: white;
-    order: 2; /* Coloca este botão à direita (como ação principal) */
+    order: 2;
+    /* Coloca este botão à direita (como ação principal) */
 }
 
 #finalizarCompraBtn:hover {
@@ -181,7 +204,7 @@
 
 
 #clearcart-btn {
-    
+
     margin-right: 15px;
 }
 
@@ -189,11 +212,43 @@
     background-color: #f8f9fa;
     color: #dc3545;
     border: 1px solid #dc3545;
-  
+
 }
 
 #clearcart-btn:hover {
     background-color: #dc3545;
     color: white;
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #cab {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 12px;
+    }
+    
+    #cart {
+        padding: 15px;
+        margin: 20px 10px;
+    }
+
+    #cart a[href="produtos.html"] {
+    display: block;
+    /* Ocupa a largura total para que a margin auto funcione (em teoria, ou para forçar a quebra de linha) */
+    max-width: 1000px;
+    margin: 5px auto 25px auto;
+    /* Alinha no centro, mas o text-align right do container resolve */
+    text-align: right;
+    font-size: 1rem;
+    padding-right: 10px;
+    }
 }
