@@ -21,6 +21,7 @@ main{display:block}
 
 h2,h3{
   max-width:1024px;margin:28px auto 12px;padding:0 16px;
+  color:#6b7280 ;
 }
 h2{font-size:1.6rem}
 h3{font-size:1.3rem;color:var(--muted)}
@@ -36,6 +37,7 @@ h3{font-size:1.3rem;color:var(--muted)}
   box-shadow:var(--shadow);
   font-size:1rem;
   color:#222;
+  text-align: justify;
 }
 
 #div{

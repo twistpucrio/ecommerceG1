@@ -153,15 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ${favoriteBtnHtml}
         `;
 
-        // 2. Torna o modal visível
         productModalEl.style.display = 'block';
 
-        // 3. Adiciona listeners para os botões dentro do modal
         setupModalButtonListeners();
     }
 
 
-    // --- Renderização dos produtos ---
     function renderProducts(products) {
         productListEl.innerHTML = '';
         if (!products || products.length === 0) {
@@ -192,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- FUNÇÃO DE CRIAÇÃO DE CATEGORIAS ---
     function createCategoryCheckboxes() {
         if (!categoryOptionsEl) return;
         categoryOptionsEl.innerHTML = '';
@@ -206,13 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- FUNÇÃO PRINCIPAL DE FILTRO ---
     async function loadAndFilterProducts(applyVisualFilters = false) {
         try {
             const allProducts = await api.listProducts();
             let filteredProducts = allProducts;
 
-            // 1. FILTRO DE BUSCA (Texto)
             const searchTerm = buscaInputEl ? buscaInputEl.value : getQueryFromUrl();
             const nq = norm(searchTerm);
 
@@ -224,14 +218,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // 2. FILTRO DE CATEGORIA (URL)
             const categoriaURL = getCategoryFromUrl();
             let shouldApplyURLCategory = true;
 
             if (applyVisualFilters) {
-                // === APLICAR FILTROS VISUAIS (Usuário clicou em Aplicar Filtros) ===
 
-                // 2a. Checkboxes Filter
                 const categoriesFromCheckboxes = Array.from(categoryOptionsEl.querySelectorAll('input:checked'))
                     .map(input => input.value);
 
@@ -242,9 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     shouldApplyURLCategory = false;
                 }
 
-                // 💡 CORREÇÃO 2: Simplificar a lógica e usar as variáveis de referência globais
                 
-                // 3. FILTRO DE PREÇO MÍNIMO
                 const minPrice = parseFloat(minPriceFilterInput ? minPriceFilterInput.value : '');
                 if (!isNaN(minPrice) && minPrice >= 0) {
                     filteredProducts = filteredProducts.filter(product =>
@@ -252,7 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     );
                 }
                 
-                // 4. FILTRO DE PREÇO MÁXIMO
                 const maxPrice = parseFloat(priceFilterInput ? priceFilterInput.value : '');
                 if (!isNaN(maxPrice) && maxPrice > 0) {
                     filteredProducts = filteredProducts.filter(product =>
@@ -260,9 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     );
                 }
                 
-                // Opcional: Alerta se o mínimo for maior que o máximo
                 if (!isNaN(minPrice) && !isNaN(maxPrice) && minPrice > maxPrice) {
-                     // Não é necessário um alert, pois o filtro já resultará em lista vazia ou menor, mas ajuda o usuário
                      console.warn('Atenção: O preço mínimo é maior que o preço máximo.');
                 }
             }
@@ -309,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- EVENT LISTENERS PARA OS NOVOS BOTÕES DE FILTRO ---
 
     if (applyFiltersBtn) {
         applyFiltersBtn.addEventListener('click', () => {
