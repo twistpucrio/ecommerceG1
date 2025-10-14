@@ -30,7 +30,6 @@ a {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 8px rgba(59, 156, 119, 0.08);
-    #cab{ position:relative; }
 }
 
 
@@ -187,6 +186,7 @@ a {
 
 #top-bar {
   display: flex;
+  display: center;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -194,6 +194,8 @@ a {
   margin: 20px auto;
   padding: 0 16px;
   box-sizing: border-box;
+  display:block;                
+  text-align:center;
 }
 
 #busca {
@@ -571,7 +573,8 @@ h2 {
   #top-bar {
     padding: 12px 12px 0;
     gap: 8px;
-    width: 100%;
+    width: 70%;
+    display: inline;
   }
   #busca {
     flex: 1 1 auto;
@@ -579,6 +582,8 @@ h2 {
     max-width: none;
     font-size: .95rem;
     padding: 8px 10px;
+    display: inline;
+
   }
   #btn-busca { padding: 8px 12px; font-size: .95rem; }
 
