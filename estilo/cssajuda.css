@@ -1,0 +1,115 @@
+:root {
+    --primary-green: #388e3c; 
+    --light-green: #4caf50; 
+    --text-dark: #333;
+    --text-light: #666;
+    --border-color: #eee;
+    --background-light: #fff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7; 
+
+}
+
+.help-container {
+    width: 100%;
+    max-width: 600px; 
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #2e7d5a;
+    margin: 0 auto;
+
+}
+
+h1 {
+    color: var(--text-dark);
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-light);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-button.active {
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--primary-green);
+}
+
+/* Estilo da Seção de Ajuda (Título e Itens) */
+.section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+/* Estilo de cada Item de Ajuda */
+.help-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.help-item:last-child {
+    border-bottom: none; /* Remove a borda do último item da seção */
+}
+
+.help-item:hover {
+    background-color: #f9f9f9;
+}
+
+.item-content {
+    flex-grow: 1;
+}
+
+.item-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.item-description {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin: 5px 0 0 0;
+}
+
+.arrow {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-light);
+    margin-left: 10px;
+}
+
+/* Ajuste para a segunda seção */
+.account-help {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
