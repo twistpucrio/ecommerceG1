@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderFavorites(favorites) {
     favoritesListEl.innerHTML = '';
     if (!favorites.length) {
-      favoritesListEl.innerHTML = '<p>Você não tem nenhum produto favorito. Adicione alguns na página de produtos!</p>';
+      favoritesListEl.innerHTML = '<p id="msgfav">Você não tem nenhum produto favorito. Adicione alguns na página de produtos!</p>';
       return;
     }
     favorites.forEach(product => {

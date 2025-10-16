@@ -31,6 +31,15 @@
     flex-direction: column;
     justify-content: center;
     height: 60px;
+   
+    
+    
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cart-items-container .product-item .info h4 {
@@ -40,17 +49,16 @@
 
 .quantity-control {
     display: flex;
-    /* Alinha os botões e o número */
     align-items: center;
     gap: 0;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
-    /* Garante que os cantos arredondados fiquem bonitos */
     width: fit-content;
     height: 35px;
-    /* Altura uniforme para o grupo */
+    
+    
 }
 
 .quantity-control button {
@@ -59,13 +67,13 @@
     color: #333;
     width: 35px;
     height: 100%;
-    /* Ocupa a altura do container */
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     padding: 0;
     line-height: 1;
     transition: background-color 0.2s;
+    
 }
 
 .quantity-control button:hover:not([disabled]) {

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                            <span class="product-qty" data-product-id="${item.id}">${item.count}</span>
                            <button class="qty-btn-plus" data-product-id="${item.id}">+</button>
                        </div>
-                       <div>R$${(item.price * item.count).toFixed(2)}</div> </div>
+                       <br/><div>R$${(item.price * item.count).toFixed(2)}</div> </div>
            <button class="remover" data-product-id="${item.id}">Remover Item</button>
           <\div>
           `;
