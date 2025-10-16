@@ -34,13 +34,9 @@ a {
 
 
 
-#logo h1 {
-    color: #fff;
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
+#logo img{
+    width: 120px;
+    height: auto;
 }
 
 #icones {
