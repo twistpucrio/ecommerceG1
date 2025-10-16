@@ -631,3 +631,11 @@ h2 {
   .footer-col { flex-basis: 48%; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+.estrela{
+    height: 32px;
+    width: 31px;
+    box-shadow: 0 2px 8px rgba(59, 156, 119, 0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
