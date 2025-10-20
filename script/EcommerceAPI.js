@@ -56,14 +56,14 @@ class EcommerceAPI {
     }
 
     loadProducts() {
-        return fetch("script/prod.json")
+        return fetch("http://wei.tecgraf.puc-rio.br:8001/api/products")
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             return response.json();
         })
-        .then(data => data.products)
+        .then(data => data.produtos)
         .catch(error => {
             console.error('There was a problem loading the products:', error);
             return [];
