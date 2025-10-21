@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Especifica a codificação de caracteres para o documento HTML -->
+    <link rel="stylesheet" href="/style.css"> <!-- Link para o arquivo CSS externo para estilização -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> <!-- Preconexão para carregar fontes mais rapidamente -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> <!-- Link para fontes Google para a fonte 'Poppins' -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta tag de design responsivo -->
+    <title>Formulário de Contato</title> <!-- Título do documento mostrado na aba do navegador -->
+</head>
+<body>
+    <div class="form-container"> <!-- Container para o formulário para estilização específica -->
+        <form method="post" action="/submit/products" class="contact-form"> <!-- Elemento de formulário onde as entradas do usuário serão enviadas -->
+            <h2>CONTATO</h2> <!-- Cabeçalho do formulário -->
+            <input type="id" id="id" placeholder="id">id:<br> <!-- Campo para o nome -->
+            <input type="name" id="name" placeholder="nome">nome:<br> <!-- Campo para o email, valida formato de email -->
+            <input type="price" id="price" placeholder="preço">preço:<br> <!-- Campo para o assunto -->
+            <input type="category" id="category" placeholder="categoria">categoria:<br> <!-- Campo para o assunto -->
+            <input type="description" id="description" placeholder="descrição">descrição:<br> <!-- Campo para o assunto -->
+            <input type="submit" class="submit" value="Send Message"> <!-- Botão de envio para enviar os dados do formulário -->
+        </form>
+    </div>
+    <script src="/app.js"></script> <!-- Link para o arquivo JavaScript externo para scripts -->
+</body>
+</html>

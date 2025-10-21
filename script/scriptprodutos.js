@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupModalButtonListeners();
     }
 
-
+    
     function renderProducts(products) {
         productListEl.innerHTML = '';
         if (!products || products.length === 0) {
@@ -204,7 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadAndFilterProducts(applyVisualFilters = false) {
         try {
-            const allProducts = await api.listProducts();
+
+            const categoriaURL = getCategoryFromUrl();
+            let shouldApplyURLCategory = true;
+
+            const allProducts = await api.listProductsByCategory(categoriaURL);
             let filteredProducts = allProducts;
 
             const searchTerm = buscaInputEl ? buscaInputEl.value : getQueryFromUrl();
@@ -217,9 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     return nome.includes(nq) || cat.includes(nq);
                 });
             }
-
-            const categoriaURL = getCategoryFromUrl();
-            let shouldApplyURLCategory = true;
 
             if (applyVisualFilters) {
 
